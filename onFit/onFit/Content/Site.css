@@ -1,15 +1,6 @@
-﻿html {
-    background-color: #e2e2e2;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: #fff;
-    border-top: solid 10px #000;
-    color: #333;
+﻿body {
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-family: 'Lato', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -22,14 +13,14 @@ a {
     text-decoration: underline;
 }
 
-    a:link, a:visited,
+    /*a:link, a:visited,
     a:active, a:hover {
         color: #333;
     }
 
     a:hover {
         background-color: #c7d1d6;
-    }
+    }*/
 
 header, footer, hgroup,
 nav, section {
@@ -415,9 +406,8 @@ fieldset {
         }
 
 label {
-    display: block;
-    font-size: 1.2em;
-    font-weight: 600;
+    display: inline-block;
+    font-size: 1em;
 }
 
 label.checkbox {
@@ -443,13 +433,13 @@ textarea {
         border: 1px solid #7ac0da;
     }
 
-    input[type="checkbox"] {
+    /*input[type="checkbox"] {
         background: transparent;
         border: inherit;
         width: auto;
-    }
+    }*/
 
-    input[type="submit"],
+    /*input[type="submit"],
     input[type="button"],
     button {
         background-color: #d3dce0;
@@ -460,7 +450,7 @@ textarea {
         padding: 7px;
         margin-right: 8px;
         width: auto;
-    }
+    }*/
 
     td input[type="submit"],
     td input[type="button"],
@@ -586,6 +576,78 @@ tr.pager td {
     padding: 0 0.25em 0 0;
 }
 
+div.header-top{
+    height: 30px;
+    width: 100%;
+    float: left;
+    background-color: #343434;
+}
+
+div.header-logo{
+    height: 150px;
+    width: 100%;
+    float: left;
+    background-color: #fff;
+}
+
+div.navigation-bar{
+    height: 50px;
+    width: 100%;
+    float: left;
+    background-color: #343434;
+}
+
+div.container{
+    width: 100%;
+    float: left;
+}
+
+div.product-filter{
+    width: 70%;
+    height: 250px;
+    background-color: white;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.60);
+    -moz-box-shadow:    0px 5px 10px 0px rgba(50, 50, 50, 0.60);
+    box-shadow:         0px 5px 10px 0px rgba(50, 50, 50, 0.60);
+}
+
+div.header-top-content{
+    width: 70%;
+    height: inherit;
+    background-color: inherit;
+    margin: 0 auto;
+}
+
+div.navigation-bar-content{
+    width: 70%;
+    height: inherit;
+    background-color: inherit;
+    margin: 0 auto;
+}
+
+button.navigation-bar-button{
+    float: left;
+    font-size: 14px;
+    font-family: font-family: 'Lato', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+    height: inherit;
+    width: 100px;
+    background-color: inherit;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+button.navigation-bar-button:hover{
+    background-color: #454545;
+}
+
+div.filter{
+    font-size: 9px;
+    float: left;
+}
 
 /********************
 *   Mobile Styles   *
