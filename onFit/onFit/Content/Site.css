@@ -612,6 +612,27 @@ div.product-filter{
     box-shadow:         0px 5px 10px 0px rgba(50, 50, 50, 0.60);
 }
 
+div.filter-group{
+    max-height: 240px;
+    height: auto;
+    width: 150px;
+    margin: 5px 5px 5px 5px;
+    float: left;
+}
+
+div.filter-header{
+    width: inherit;
+    border-bottom: 1px solid #9f9f9f;
+    font-size: 9px;
+    float: left;
+}
+
+div.filter-header > i{
+    font-size: 14px; 
+    color: #9f9f9f;
+}
+
+
 div.header-top-content{
     width: 70%;
     height: inherit;
@@ -647,6 +668,7 @@ button.navigation-bar-button:hover{
 div.filter{
     font-size: 9px;
     float: left;
+    margin-left: 5px;
 }
 
 /********************
