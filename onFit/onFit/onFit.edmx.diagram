@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc796e9c6d084add8bc2df73c3ddc459" Name="Diagram1">
+        <EntityTypeShape EntityType="Main_onFitModel.Dla_Kogo" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Main_onFitModel.Dni" Width="1.5" PointX="2.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Main_onFitModel.Grupa" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Main_onFitModel.Karty_Szkoly_Intersekcja" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Main_onFitModel.Kiedy_Zajecia" Width="1.5" PointX="5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Main_onFitModel.Poziomy" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Main_onFitModel.Szkoly" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Main_onFitModel.Typy_Kart" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Main_onFitModel.Typy_Tanca" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <AssociationConnector Association="Main_onFitModel.FK_Grupa_DlaKogo" ManuallyRouted="false" />
+        <AssociationConnector Association="Main_onFitModel.FK_KiedyZajecia_Dzien" ManuallyRouted="false" />
+        <AssociationConnector Association="Main_onFitModel.FK_Grupa_Poziom" ManuallyRouted="false" />
+        <AssociationConnector Association="Main_onFitModel.FK_Grupa_Szkola" ManuallyRouted="false" />
+        <AssociationConnector Association="Main_onFitModel.FK_Grupa_TypTanca" ManuallyRouted="false" />
+        <AssociationConnector Association="Main_onFitModel.FK_KartySzkolyIntersekcja_Karta" ManuallyRouted="false" />
+        <AssociationConnector Association="Main_onFitModel.FK_KartySzkolyIntersekcja_Szkola" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

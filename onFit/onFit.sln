@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "onFit", "onFit\onFit.csproj", "{2BBE80D6-F1C7-4124-B8CD-CD15FF27640E}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "onFit.DB", "onFit.DB\onFit.DB.sqlproj", "{8842F9AC-5E2C-4D28-B3C5-892A43894402}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{2BBE80D6-F1C7-4124-B8CD-CD15FF27640E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BBE80D6-F1C7-4124-B8CD-CD15FF27640E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BBE80D6-F1C7-4124-B8CD-CD15FF27640E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8842F9AC-5E2C-4D28-B3C5-892A43894402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8842F9AC-5E2C-4D28-B3C5-892A43894402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8842F9AC-5E2C-4D28-B3C5-892A43894402}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8842F9AC-5E2C-4D28-B3C5-892A43894402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8842F9AC-5E2C-4D28-B3C5-892A43894402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8842F9AC-5E2C-4D28-B3C5-892A43894402}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

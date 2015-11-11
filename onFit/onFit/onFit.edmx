@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Main_onFitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dla_Kogo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dni">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grupa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_Szkoly" Type="int" Nullable="false" />
+          <Property Name="Id_TypTanca" Type="int" Nullable="false" />
+          <Property Name="Id_Poziom" Type="int" Nullable="false" />
+          <Property Name="Do_Kiedy_Zapisy" Type="datetime" />
+          <Property Name="Poczatek_Zajec" Type="datetime" />
+          <Property Name="Czy_Wolne_Miejsca" Type="bit" Nullable="false" />
+          <Property Name="Id_Dla_Kogo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Karty_Szkoly_Intersekcja">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_Szkoly" Type="int" Nullable="false" />
+          <Property Name="Id_Karty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kiedy_Zajecia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_Grupy" Type="int" Nullable="false" />
+          <Property Name="Id_Dzien" Type="int" Nullable="false" />
+          <Property Name="Godzina_Od" Type="int" Nullable="false" />
+          <Property Name="Godzina_Do" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poziomy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Szkoly">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="500" Nullable="false" />
+          <Property Name="Adres" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Strona_WWW" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Typy_Kart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Typy_Tanca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Film" Type="nchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Grupa_DlaKogo">
+          <End Role="Dla_Kogo" Type="Self.Dla_Kogo" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dla_Kogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="Id_Dla_Kogo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_Poziom">
+          <End Role="Poziomy" Type="Self.Poziomy" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poziomy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="Id_Poziom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_Szkola">
+          <End Role="Szkoly" Type="Self.Szkoly" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Szkoly">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="Id_Szkoly" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_TypTanca">
+          <End Role="Typy_Tanca" Type="Self.Typy_Tanca" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typy_Tanca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="Id_TypTanca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KartySzkolyIntersekcja_Karta">
+          <End Role="Typy_Kart" Type="Self.Typy_Kart" Multiplicity="1" />
+          <End Role="Karty_Szkoly_Intersekcja" Type="Self.Karty_Szkoly_Intersekcja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typy_Kart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karty_Szkoly_Intersekcja">
+              <PropertyRef Name="Id_Karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KartySzkolyIntersekcja_Szkola">
+          <End Role="Szkoly" Type="Self.Szkoly" Multiplicity="1" />
+          <End Role="Karty_Szkoly_Intersekcja" Type="Self.Karty_Szkoly_Intersekcja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Szkoly">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karty_Szkoly_Intersekcja">
+              <PropertyRef Name="Id_Szkoly" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KiedyZajecia_Dzien">
+          <End Role="Dni" Type="Self.Dni" Multiplicity="1" />
+          <End Role="Kiedy_Zajecia" Type="Self.Kiedy_Zajecia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dni">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kiedy_Zajecia">
+              <PropertyRef Name="Id_Dzien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Main_onFitModelStoreContainer">
+          <EntitySet Name="Dla_Kogo" EntityType="Self.Dla_Kogo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dni" EntityType="Self.Dni" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupa" EntityType="Self.Grupa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Karty_Szkoly_Intersekcja" EntityType="Self.Karty_Szkoly_Intersekcja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kiedy_Zajecia" EntityType="Self.Kiedy_Zajecia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poziomy" EntityType="Self.Poziomy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Szkoly" EntityType="Self.Szkoly" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Typy_Kart" EntityType="Self.Typy_Kart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Typy_Tanca" EntityType="Self.Typy_Tanca" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Grupa_DlaKogo" Association="Self.FK_Grupa_DlaKogo">
+            <End Role="Dla_Kogo" EntitySet="Dla_Kogo" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_Poziom" Association="Self.FK_Grupa_Poziom">
+            <End Role="Poziomy" EntitySet="Poziomy" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_Szkola" Association="Self.FK_Grupa_Szkola">
+            <End Role="Szkoly" EntitySet="Szkoly" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_TypTanca" Association="Self.FK_Grupa_TypTanca">
+            <End Role="Typy_Tanca" EntitySet="Typy_Tanca" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KartySzkolyIntersekcja_Karta" Association="Self.FK_KartySzkolyIntersekcja_Karta">
+            <End Role="Typy_Kart" EntitySet="Typy_Kart" />
+            <End Role="Karty_Szkoly_Intersekcja" EntitySet="Karty_Szkoly_Intersekcja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KartySzkolyIntersekcja_Szkola" Association="Self.FK_KartySzkolyIntersekcja_Szkola">
+            <End Role="Szkoly" EntitySet="Szkoly" />
+            <End Role="Karty_Szkoly_Intersekcja" EntitySet="Karty_Szkoly_Intersekcja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KiedyZajecia_Dzien" Association="Self.FK_KiedyZajecia_Dzien">
+            <End Role="Dni" EntitySet="Dni" />
+            <End Role="Kiedy_Zajecia" EntitySet="Kiedy_Zajecia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Main_onFitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dla_Kogo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="500" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Grupa" Relationship="Self.FK_Grupa_DlaKogo" FromRole="Dla_Kogo" ToRole="Grupa" />
+        </EntityType>
+        <EntityType Name="Dni">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Kiedy_Zajecia" Relationship="Self.FK_KiedyZajecia_Dzien" FromRole="Dni" ToRole="Kiedy_Zajecia" />
+        </EntityType>
+        <EntityType Name="Grupa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_Szkoly" Type="Int32" Nullable="false" />
+          <Property Name="Id_TypTanca" Type="Int32" Nullable="false" />
+          <Property Name="Id_Poziom" Type="Int32" Nullable="false" />
+          <Property Name="Do_Kiedy_Zapisy" Type="DateTime" Precision="3" />
+          <Property Name="Poczatek_Zajec" Type="DateTime" Precision="3" />
+          <Property Name="Czy_Wolne_Miejsca" Type="Boolean" Nullable="false" />
+          <Property Name="Id_Dla_Kogo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dla_Kogo" Relationship="Self.FK_Grupa_DlaKogo" FromRole="Grupa" ToRole="Dla_Kogo" />
+          <NavigationProperty Name="Poziomy" Relationship="Self.FK_Grupa_Poziom" FromRole="Grupa" ToRole="Poziomy" />
+          <NavigationProperty Name="Szkoly" Relationship="Self.FK_Grupa_Szkola" FromRole="Grupa" ToRole="Szkoly" />
+          <NavigationProperty Name="Typy_Tanca" Relationship="Self.FK_Grupa_TypTanca" FromRole="Grupa" ToRole="Typy_Tanca" />
+        </EntityType>
+        <EntityType Name="Karty_Szkoly_Intersekcja">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_Szkoly" Type="Int32" Nullable="false" />
+          <Property Name="Id_Karty" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Typy_Kart" Relationship="Self.FK_KartySzkolyIntersekcja_Karta" FromRole="Karty_Szkoly_Intersekcja" ToRole="Typy_Kart" />
+          <NavigationProperty Name="Szkoly" Relationship="Self.FK_KartySzkolyIntersekcja_Szkola" FromRole="Karty_Szkoly_Intersekcja" ToRole="Szkoly" />
+        </EntityType>
+        <EntityType Name="Kiedy_Zajecia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_Grupy" Type="Int32" Nullable="false" />
+          <Property Name="Id_Dzien" Type="Int32" Nullable="false" />
+          <Property Name="Godzina_Od" Type="Int32" Nullable="false" />
+          <Property Name="Godzina_Do" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dni" Relationship="Self.FK_KiedyZajecia_Dzien" FromRole="Kiedy_Zajecia" ToRole="Dni" />
+        </EntityType>
+        <EntityType Name="Poziomy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="500" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Grupa" Relationship="Self.FK_Grupa_Poziom" FromRole="Poziomy" ToRole="Grupa" />
+        </EntityType>
+        <EntityType Name="Szkoly">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="500" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Strona_WWW" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Grupa" Relationship="Self.FK_Grupa_Szkola" FromRole="Szkoly" ToRole="Grupa" />
+          <NavigationProperty Name="Karty_Szkoly_Intersekcja" Relationship="Self.FK_KartySzkolyIntersekcja_Szkola" FromRole="Szkoly" ToRole="Karty_Szkoly_Intersekcja" />
+        </EntityType>
+        <EntityType Name="Typy_Kart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Karty_Szkoly_Intersekcja" Relationship="Self.FK_KartySzkolyIntersekcja_Karta" FromRole="Typy_Kart" ToRole="Karty_Szkoly_Intersekcja" />
+        </EntityType>
+        <EntityType Name="Typy_Tanca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Film" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Grupa" Relationship="Self.FK_Grupa_TypTanca" FromRole="Typy_Tanca" ToRole="Grupa" />
+        </EntityType>
+        <Association Name="FK_Grupa_DlaKogo">
+          <End Role="Dla_Kogo" Type="Self.Dla_Kogo" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dla_Kogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="Id_Dla_Kogo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KiedyZajecia_Dzien">
+          <End Role="Dni" Type="Self.Dni" Multiplicity="1" />
+          <End Role="Kiedy_Zajecia" Type="Self.Kiedy_Zajecia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dni">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kiedy_Zajecia">
+              <PropertyRef Name="Id_Dzien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_Poziom">
+          <End Role="Poziomy" Type="Self.Poziomy" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poziomy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="Id_Poziom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_Szkola">
+          <End Role="Szkoly" Type="Self.Szkoly" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Szkoly">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="Id_Szkoly" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_TypTanca">
+          <End Role="Typy_Tanca" Type="Self.Typy_Tanca" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typy_Tanca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="Id_TypTanca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KartySzkolyIntersekcja_Karta">
+          <End Role="Typy_Kart" Type="Self.Typy_Kart" Multiplicity="1" />
+          <End Role="Karty_Szkoly_Intersekcja" Type="Self.Karty_Szkoly_Intersekcja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Typy_Kart">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karty_Szkoly_Intersekcja">
+              <PropertyRef Name="Id_Karty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KartySzkolyIntersekcja_Szkola">
+          <End Role="Szkoly" Type="Self.Szkoly" Multiplicity="1" />
+          <End Role="Karty_Szkoly_Intersekcja" Type="Self.Karty_Szkoly_Intersekcja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Szkoly">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karty_Szkoly_Intersekcja">
+              <PropertyRef Name="Id_Szkoly" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Main_onFitEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dla_Kogo" EntityType="Self.Dla_Kogo" />
+          <EntitySet Name="Dni" EntityType="Self.Dni" />
+          <EntitySet Name="Grupa" EntityType="Self.Grupa" />
+          <EntitySet Name="Karty_Szkoly_Intersekcja" EntityType="Self.Karty_Szkoly_Intersekcja" />
+          <EntitySet Name="Kiedy_Zajecia" EntityType="Self.Kiedy_Zajecia" />
+          <EntitySet Name="Poziomy" EntityType="Self.Poziomy" />
+          <EntitySet Name="Szkoly" EntityType="Self.Szkoly" />
+          <EntitySet Name="Typy_Kart" EntityType="Self.Typy_Kart" />
+          <EntitySet Name="Typy_Tanca" EntityType="Self.Typy_Tanca" />
+          <AssociationSet Name="FK_Grupa_DlaKogo" Association="Self.FK_Grupa_DlaKogo">
+            <End Role="Dla_Kogo" EntitySet="Dla_Kogo" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KiedyZajecia_Dzien" Association="Self.FK_KiedyZajecia_Dzien">
+            <End Role="Dni" EntitySet="Dni" />
+            <End Role="Kiedy_Zajecia" EntitySet="Kiedy_Zajecia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_Poziom" Association="Self.FK_Grupa_Poziom">
+            <End Role="Poziomy" EntitySet="Poziomy" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_Szkola" Association="Self.FK_Grupa_Szkola">
+            <End Role="Szkoly" EntitySet="Szkoly" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_TypTanca" Association="Self.FK_Grupa_TypTanca">
+            <End Role="Typy_Tanca" EntitySet="Typy_Tanca" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KartySzkolyIntersekcja_Karta" Association="Self.FK_KartySzkolyIntersekcja_Karta">
+            <End Role="Typy_Kart" EntitySet="Typy_Kart" />
+            <End Role="Karty_Szkoly_Intersekcja" EntitySet="Karty_Szkoly_Intersekcja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KartySzkolyIntersekcja_Szkola" Association="Self.FK_KartySzkolyIntersekcja_Szkola">
+            <End Role="Szkoly" EntitySet="Szkoly" />
+            <End Role="Karty_Szkoly_Intersekcja" EntitySet="Karty_Szkoly_Intersekcja" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Main_onFitModelStoreContainer" CdmEntityContainer="Main_onFitEntities">
+          <EntitySetMapping Name="Dla_Kogo">
+            <EntityTypeMapping TypeName="Main_onFitModel.Dla_Kogo">
+              <MappingFragment StoreEntitySet="Dla_Kogo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dni">
+            <EntityTypeMapping TypeName="Main_onFitModel.Dni">
+              <MappingFragment StoreEntitySet="Dni">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupa">
+            <EntityTypeMapping TypeName="Main_onFitModel.Grupa">
+              <MappingFragment StoreEntitySet="Grupa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Szkoly" ColumnName="Id_Szkoly" />
+                <ScalarProperty Name="Id_TypTanca" ColumnName="Id_TypTanca" />
+                <ScalarProperty Name="Id_Poziom" ColumnName="Id_Poziom" />
+                <ScalarProperty Name="Do_Kiedy_Zapisy" ColumnName="Do_Kiedy_Zapisy" />
+                <ScalarProperty Name="Poczatek_Zajec" ColumnName="Poczatek_Zajec" />
+                <ScalarProperty Name="Czy_Wolne_Miejsca" ColumnName="Czy_Wolne_Miejsca" />
+                <ScalarProperty Name="Id_Dla_Kogo" ColumnName="Id_Dla_Kogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Karty_Szkoly_Intersekcja">
+            <EntityTypeMapping TypeName="Main_onFitModel.Karty_Szkoly_Intersekcja">
+              <MappingFragment StoreEntitySet="Karty_Szkoly_Intersekcja">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Szkoly" ColumnName="Id_Szkoly" />
+                <ScalarProperty Name="Id_Karty" ColumnName="Id_Karty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kiedy_Zajecia">
+            <EntityTypeMapping TypeName="Main_onFitModel.Kiedy_Zajecia">
+              <MappingFragment StoreEntitySet="Kiedy_Zajecia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Grupy" ColumnName="Id_Grupy" />
+                <ScalarProperty Name="Id_Dzien" ColumnName="Id_Dzien" />
+                <ScalarProperty Name="Godzina_Od" ColumnName="Godzina_Od" />
+                <ScalarProperty Name="Godzina_Do" ColumnName="Godzina_Do" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Poziomy">
+            <EntityTypeMapping TypeName="Main_onFitModel.Poziomy">
+              <MappingFragment StoreEntitySet="Poziomy">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Szkoly">
+            <EntityTypeMapping TypeName="Main_onFitModel.Szkoly">
+              <MappingFragment StoreEntitySet="Szkoly">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Strona_WWW" ColumnName="Strona_WWW" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Typy_Kart">
+            <EntityTypeMapping TypeName="Main_onFitModel.Typy_Kart">
+              <MappingFragment StoreEntitySet="Typy_Kart">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Typy_Tanca">
+            <EntityTypeMapping TypeName="Main_onFitModel.Typy_Tanca">
+              <MappingFragment StoreEntitySet="Typy_Tanca">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Film" ColumnName="Film" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

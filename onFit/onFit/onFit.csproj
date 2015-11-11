@@ -46,11 +46,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,9 +76,6 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -190,12 +196,54 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Dla_Kogo.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dni.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Grupa.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Karty_Szkoly_Intersekcja.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kiedy_Zajecia.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="onFit.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>onFit.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="onFit.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
+    <Compile Include="onFit.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>onFit.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Poziomy.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Szkoly.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Typy_Kart.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Typy_Tanca.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\angularicons\angularicons.svg" />
@@ -320,10 +368,28 @@
     <Content Include="Content\fonts\fontello.ttf" />
     <Content Include="Content\fonts\fontello.woff" />
     <Content Include="Content\bootflat\img\check_flat\default.psd" />
+    <EntityDeploy Include="onFit.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>onFit.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="onFit.edmx.diagram">
+      <DependentUpon>onFit.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\onfit.pubxml" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="onFit.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>onFit.edmx</DependentUpon>
+      <LastGenOutput>onFit.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="onFit.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>onFit.edmx</DependentUpon>
+      <LastGenOutput>onFit.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
@@ -389,6 +455,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

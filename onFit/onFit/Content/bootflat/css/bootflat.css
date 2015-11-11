@@ -1737,8 +1737,10 @@ blockquote {
 }
 
 .navbar-inverse {
-  background-color: #333;
-  border-color: #333;
+  background-color: #434A54;
+  border-color: #434A54;
+  width: auto;
+  height: 50px;
 }
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-link, .navbar-inverse .btn-link {
   color: #8c8c8c;
