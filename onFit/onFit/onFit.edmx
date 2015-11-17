@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Main_onFitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Main_onFitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Dla_Kogo">
           <Key>
             <PropertyRef Name="Id" />
@@ -165,6 +165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetDays" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Main_onFitModelStoreContainer">
           <EntitySet Name="Dla_Kogo" EntityType="Self.Dla_Kogo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dni" EntityType="Self.Dni" Schema="dbo" store:Type="Tables" />
@@ -204,8 +205,7 @@
             <End Role="Kiedy_Zajecia" EntitySet="Kiedy_Zajecia" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Main_onFitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -421,7 +421,12 @@
             <End Role="Szkoly" EntitySet="Szkoly" />
             <End Role="Karty_Szkoly_Intersekcja" EntitySet="Karty_Szkoly_Intersekcja" />
           </AssociationSet>
+          <FunctionImport Name="GetDays" ReturnType="Collection(Main_onFitModel.GetDays_Result)" />
         </EntityContainer>
+        <ComplexType Name="GetDays_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nazwa" Nullable="false" MaxLength="100" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -513,6 +518,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetDays" FunctionName="Main_onFitModel.Store.GetDays">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Main_onFitModel.GetDays_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

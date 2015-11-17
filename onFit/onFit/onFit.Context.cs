@@ -12,6 +12,8 @@ namespace onFit
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Main_onFitEntities : DbContext
     {
@@ -34,5 +36,10 @@ namespace onFit
         public virtual DbSet<Szkoly> Szkoly { get; set; }
         public virtual DbSet<Typy_Kart> Typy_Kart { get; set; }
         public virtual DbSet<Typy_Tanca> Typy_Tanca { get; set; }
+    
+        public virtual ObjectResult<GetDays_Result> GetDays()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDays_Result>("GetDays");
+        }
     }
 }
