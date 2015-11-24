@@ -12,8 +12,11 @@ namespace onFit.Controllers
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
-            Main_onFitEntities ofe = new Main_onFitEntities();
-            var asdasdasd = ofe.GetDays();
+            Main_onFitEntities dbFitEntities = new Main_onFitEntities();
+
+            var adasdas = dbFitEntities.GetDays();
+            var fff = adasdas.FirstOrDefault();
+
             return View();
         }
 
