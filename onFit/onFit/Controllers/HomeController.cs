@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using onFit.Models;
 
 namespace onFit.Controllers
 {
@@ -13,8 +14,8 @@ namespace onFit.Controllers
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
             Main_onFitEntities dbFitEntities = new Main_onFitEntities();
+            var adasdas = dbFitEntities.GetDays().ToList();
 
-            var adasdas = dbFitEntities.GetDays();
             var fff = adasdas.FirstOrDefault();
 
             return View();
