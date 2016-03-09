@@ -1,68 +1,16 @@
 ﻿@{
     ViewBag.Title = "Strona główna";
 }
-@section featured {
-    <section class="featured">
 
-        <div class="product-filter">
-            <div class="filter-group" id="1">
-                <div class="filter-header">
-                    <i class="icon-sliders"></i><span>Rodzaj</span>
-                </div>
-                @*<div class="filter">*@
-                    <label>Wszystkie</label>
-                    <input type="checkbox" checked="checked"/>
-                @*</div>*@
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 1" checked="checked" class="icheckbox" />
-                    <label>Filtr 1</label>
-                </div>
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 2" checked="checked" class="icheckbox_flat" />
-                    <label>Filtr 2</label>
-                </div>
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 3" checked="checked" class="icheckbox_flat" />
-                    <label>Filtr 3</label>
-                </div>
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 4" checked="checked" class="icheckbox_flat" />
-                    <label>Filtr 4</label>
-                </div>
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 5" checked="checked" class="icheckbox_flat" />
-                    <label>Filtr 5</label>
-                </div>
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 6" checked="checked" class="icheckbox_flat" />
-                    <label>Filtr 6</label>
-                </div>
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 7" checked="checked" class="icheckbox_flat" />
-                    <label>Filtr 7</label>
-                </div>
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 8" checked="checked" class="icheckbox_flat" />
-                    <label>Filtr 8</label>
-                </div>
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 9" checked="checked" class="icheckbox_flat" />
-                    <label>Filtr 9</label>
-                </div>
-                <div class="filter">
-                    <input type="checkbox" name="Filtr 10" checked="checked" class="icheckbox_flat" />
-                    <label>Filtr 10</label>
-                </div>
-            </div>
-        </div>
-
-    </section>
-}
-
-<script>
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_minimal',
-            radioClass: 'iradio_minimal',
-            increaseArea: '20%' // optional
-        });
-</script>
+     <!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/metro.css" rel="stylesheet">
+    <script src="jquery.js"></script>
+    <script src="~/Scripts/metro.js"></script>
+</head>
+<body>
+    <h1>Hello world!</h1>
+    <div class="countdown" data-role="countdown" data-days="2"></div>
+</body>
+</html>

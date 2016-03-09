@@ -275,6 +275,14 @@
     <Content Include="Content\css\site.min.css" />
     <Content Include="Content\fonts\fontello.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\metro-icons.css" />
+    <Content Include="Content\metro-icons.min.css" />
+    <Content Include="Content\metro-responsive.css" />
+    <Content Include="Content\metro-responsive.min.css" />
+    <Content Include="Content\metro-rtl.css" />
+    <Content Include="Content\metro-rtl.min.css" />
+    <Content Include="Content\metro-schemes.css" />
+    <Content Include="Content\metro-schemes.min.css" />
     <Content Include="Content\metro-ui\css\iconFont.min.css" />
     <Content Include="Content\metro-ui\css\metro-bootstrap-responsive.css" />
     <Content Include="Content\metro-ui\css\metro-bootstrap-responsive.min.css" />
@@ -283,6 +291,8 @@
     <Content Include="Content\metro-ui\fonts\iconFont.dev.svg" />
     <Content Include="Content\metro-ui\fonts\iconFont.svg" />
     <Content Include="Content\metro-ui\fonts\metroSysIcons.svg" />
+    <Content Include="Content\metro.css" />
+    <Content Include="Content\metro.min.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -338,6 +348,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Fonts\metro.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\angularicons\angularicons.eot" />
     <Content Include="Content\angularicons\angularicons.ttf" />
@@ -400,6 +411,10 @@
     <Content Include="Content\metro-ui\fonts\iconFont.ttf" />
     <Content Include="Content\metro-ui\fonts\iconFont.json" />
     <Content Include="Content\metro-ui\fonts\iconFont.eot" />
+    <Content Include="Fonts\selection.json" />
+    <Content Include="Fonts\metro.woff" />
+    <Content Include="Fonts\metro.ttf" />
+    <Content Include="Fonts\metro.eot" />
     <None Include="Properties\PublishProfiles\onfit.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="onFit.Context.tt">
@@ -434,6 +449,8 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\metro-ui\jquery.ui.widget.js" />
     <Content Include="Scripts\metro-ui\metro.min.js" />
+    <Content Include="Scripts\metro.js" />
+    <Content Include="Scripts\metro.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
