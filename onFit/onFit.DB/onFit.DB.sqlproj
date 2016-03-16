@@ -64,14 +64,12 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\dbo.Grupa.sql" />
-    <Build Include="dbo\Tables\dbo.Typy_Tanca.sql" />
-    <Build Include="dbo\Tables\dbo.Dla_Kogo.sql" />
-    <Build Include="dbo\Tables\dbo.Szkoly.sql" />
-    <Build Include="dbo\Tables\dbo.Typy_Kart.sql" />
-    <Build Include="dbo\Tables\dbo.Karty_Szkoly_Intersekcja.sql" />
-    <Build Include="dbo\Tables\dbo.Poziomy.sql" />
-    <Build Include="dbo\Tables\dbo.Kiedy_Zajecia.sql" />
-    <Build Include="dbo\Tables\dbo.Dni.sql" />
+    <Build Include="dbo\Tables\dbo.Zajecia.sql" />
+    <Build Include="dbo\Tables\dbo.TerminyZajec.sql" />
+    <Build Include="dbo\Tables\dbo.PoziomyZajec.sql" />
+    <Build Include="dbo\Tables\dbo.NazwaZajec.sql" />
+    <Build Include="dbo\Tables\dbo.MiejsceZajec.sql" />
+    <Build Include="dbo\Tables\dbo.KartyZajecia.sql" />
+    <Build Include="dbo\Tables\dbo.Karty.sql" />
   </ItemGroup>
 </Project>
