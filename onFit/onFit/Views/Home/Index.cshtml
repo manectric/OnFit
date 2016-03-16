@@ -10,43 +10,75 @@
     <script src="~/Scripts/metro.js"></script>
 </head>
 <body>
-  <div class="gird">
-      <div class="row">
-          <div class="cell" style="margin-left:5%;">
-              <label>Na zajęcia będę dojeżdżać z: </label><input type="text" style="margin-left:2%;"/>
-          </div>         
-      </div>
+    <div class="grid">
+        <div class="row cells2">
+            <div class="cell"><label>Na zajęcia będę dojeżdżać z: </label></div>
+            <div class="cell"><input type="text" style="margin-left:2%;" /></div>
+        </div>
+        <div class="row">
+            <div class="cell treeview" data-role="treeview">
+                <ul>
+                    <li data-mode="radio" data-name="radio_name" data-checked="true" style="margin-left:5%;">
+                        <span class="leaf">Podaj nazwę zajęć, których szukasz: </span><input type="text" style="margin-left:2%;" />
+                    </li>
+                    <li data-mode="radio" data-name="radio_name" data-checked="false" style="margin-left:5%;">
+                        <span class="leaf">Lub wybierz z listy:</span>
+                        </li>
+</ul>
+            </div>
+        </div>
+        <div class="row cells2">
+            <div class="cell treeview" data-role="treeview">
+                <ul>
+                   
+                    <li data-mode="radio" data-name="radio_name" data-checked="false" style="margin-left:5%;">
+                        <div class="row cell2">
+                            <div class="cell WyborZajecZListy">
+                                <ul>
+                                    <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                        <span class="leaf">Wszystko</span>
+                                    </li>
+                                    <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                        <span class="leaf">Basen</span>
+                                    </li>
 
+                                    ...
+                                    <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                        <span class="leaf">Siłownia</span>
+                                    </li>
+                                    ...
+                                    <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                        <span class="leaf">Taniec</span>
+                                    </li>
+                                </ul>
+                            </div>
 
-      <div class="treeview" data-role="treeview">
-                  <ul>
-                      <li data-mode="radio" data-name="radio_name" data-checked="true" style="margin-left:5%;">
-                          <span class="leaf">Podaj nazwę zajęć, których szukasz: </span><input type="text" style="margin-left:2%;" />
-                      </li>
-                      <li data-mode="radio" data-name="radio_name" data-checked="false" style="margin-left:5%;">
-                          <span class="leaf">Lub wybierz z listy:</span>
-                          <div class="WyborZajecZListy">
-                                  <ul>
-                                      <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
-                                          <span class="leaf">Wszystko</span>
-                                      </li>
-                                      <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
-                                          <span class="leaf">Basen</span>
-                                      </li>
-                                      
-                                              ...
-                                      <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
-                                          <span class="leaf">Siłownia</span>
-                                      </li>   
-                                              ...
-                                      <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
-                                          <span class="leaf">Taniec</span>
-                                      </li>   
-                                  </ul>                              
-                          </div>
-                      </li>
-                  </ul>
-      </div>
-  </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="cell treeview" data-role="treeview">
+                <div class="cell WyborZajecZListyPochodne">
+                    <ul>
+                        <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                            <span class="leaf">Aerobik wodny</span>
+                        </li>
+                        <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                            <span class="leaf">Aerobik wodny dla pojebanych</span>
+                        </li>
+
+                        ...
+                        <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                            <span class="leaf">Pływanie normalne</span>
+                        </li>
+                        ...
+                        <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                            <span class="leaf">Pływanie popierdolone</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
