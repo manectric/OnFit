@@ -12,13 +12,13 @@ namespace onFit
     using System;
     using System.Collections.Generic;
     
-    public partial class Karty_Szkoly_Intersekcja
+    public partial class KartyZajecia
     {
-        public int Id { get; set; }
-        public int Id_Szkoly { get; set; }
-        public int Id_Karty { get; set; }
+        public int ID { get; set; }
+        public int IDZajecia { get; set; }
+        public int IDKarty { get; set; }
     
-        public virtual Typy_Kart Typy_Kart { get; set; }
-        public virtual Szkoly Szkoly { get; set; }
+        public virtual Karty Karty { get; set; }
+        public virtual Zajecia Zajecia { get; set; }
     }
 }

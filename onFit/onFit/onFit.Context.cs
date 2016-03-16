@@ -12,13 +12,11 @@ namespace onFit
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
-    public partial class Main_onFitEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public Main_onFitEntities()
-            : base("name=Main_onFitEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -27,19 +25,13 @@ namespace onFit
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Dla_Kogo> Dla_Kogo { get; set; }
-        public virtual DbSet<Dni> Dni { get; set; }
-        public virtual DbSet<Grupa> Grupa { get; set; }
-        public virtual DbSet<Karty_Szkoly_Intersekcja> Karty_Szkoly_Intersekcja { get; set; }
-        public virtual DbSet<Kiedy_Zajecia> Kiedy_Zajecia { get; set; }
-        public virtual DbSet<Poziomy> Poziomy { get; set; }
-        public virtual DbSet<Szkoly> Szkoly { get; set; }
-        public virtual DbSet<Typy_Kart> Typy_Kart { get; set; }
-        public virtual DbSet<Typy_Tanca> Typy_Tanca { get; set; }
-    
-        public virtual ObjectResult<GetDays_Result> GetDays()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDays_Result>("GetDays");
-        }
+        public virtual DbSet<Karty> Karty { get; set; }
+        public virtual DbSet<KartyZajecia> KartyZajecia { get; set; }
+        public virtual DbSet<MiejsceZajec> MiejsceZajec { get; set; }
+        public virtual DbSet<NazwaZajec> NazwaZajec { get; set; }
+        public virtual DbSet<PoziomyZajec> PoziomyZajec { get; set; }
+        public virtual DbSet<TerminyZajec> TerminyZajec { get; set; }
+        public virtual DbSet<Zajecia> Zajecia { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

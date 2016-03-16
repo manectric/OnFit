@@ -12,18 +12,20 @@ namespace onFit
     using System;
     using System.Collections.Generic;
     
-    public partial class Poziomy
+    public partial class MiejsceZajec
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Poziomy()
+        public MiejsceZajec()
         {
-            this.Grupa = new HashSet<Grupa>();
+            this.Zajecia = new HashSet<Zajecia>();
         }
     
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Nazwa { get; set; }
+        public string Adres { get; set; }
+        public string Strona_WWW { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grupa> Grupa { get; set; }
+        public virtual ICollection<Zajecia> Zajecia { get; set; }
     }
 }

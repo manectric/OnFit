@@ -12,23 +12,28 @@ namespace onFit
     using System;
     using System.Collections.Generic;
     
-    public partial class Szkoly
+    public partial class Zajecia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Szkoly()
+        public Zajecia()
         {
-            this.Grupa = new HashSet<Grupa>();
-            this.Karty_Szkoly_Intersekcja = new HashSet<Karty_Szkoly_Intersekcja>();
+            this.KartyZajecia = new HashSet<KartyZajecia>();
+            this.TerminyZajec = new HashSet<TerminyZajec>();
         }
     
-        public int Id { get; set; }
-        public string Nazwa { get; set; }
-        public string Adres { get; set; }
-        public string Strona_WWW { get; set; }
+        public int ID { get; set; }
+        public int IDMiejsceZajec { get; set; }
+        public int IDNazwaZajec { get; set; }
+        public int IDPoziomZajec { get; set; }
+        public Nullable<int> MaxIloscMiejsc { get; set; }
+        public bool CzyWolneMiejsca { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grupa> Grupa { get; set; }
+        public virtual ICollection<KartyZajecia> KartyZajecia { get; set; }
+        public virtual MiejsceZajec MiejsceZajec { get; set; }
+        public virtual NazwaZajec NazwaZajec { get; set; }
+        public virtual PoziomyZajec PoziomyZajec { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Karty_Szkoly_Intersekcja> Karty_Szkoly_Intersekcja { get; set; }
+        public virtual ICollection<TerminyZajec> TerminyZajec { get; set; }
     }
 }
