@@ -12,18 +12,18 @@ namespace onFit
     using System;
     using System.Collections.Generic;
     
-    public partial class Typy_Kart
+    public partial class PoziomyZajec
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Typy_Kart()
+        public PoziomyZajec()
         {
-            this.Karty_Szkoly_Intersekcja = new HashSet<Karty_Szkoly_Intersekcja>();
+            this.Zajecia = new HashSet<Zajecia>();
         }
     
-        public int Id { get; set; }
-        public string Nazwa { get; set; }
+        public int ID { get; set; }
+        public string Poziom { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Karty_Szkoly_Intersekcja> Karty_Szkoly_Intersekcja { get; set; }
+        public virtual ICollection<Zajecia> Zajecia { get; set; }
     }
 }

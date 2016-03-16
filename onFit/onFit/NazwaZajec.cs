@@ -12,18 +12,20 @@ namespace onFit
     using System;
     using System.Collections.Generic;
     
-    public partial class Dni
+    public partial class NazwaZajec
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Dni()
+        public NazwaZajec()
         {
-            this.Kiedy_Zajecia = new HashSet<Kiedy_Zajecia>();
+            this.Zajecia = new HashSet<Zajecia>();
         }
     
-        public int Id { get; set; }
-        public string Nazwa { get; set; }
+        public int ID { get; set; }
+        public int IDParent { get; set; }
+        public string NazwaZajec1 { get; set; }
+        public string OpisZajec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kiedy_Zajecia> Kiedy_Zajecia { get; set; }
+        public virtual ICollection<Zajecia> Zajecia { get; set; }
     }
 }

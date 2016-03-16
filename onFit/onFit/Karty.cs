@@ -12,19 +12,18 @@ namespace onFit
     using System;
     using System.Collections.Generic;
     
-    public partial class Typy_Tanca
+    public partial class Karty
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Typy_Tanca()
+        public Karty()
         {
-            this.Grupa = new HashSet<Grupa>();
+            this.KartyZajecia = new HashSet<KartyZajecia>();
         }
     
-        public int Id { get; set; }
-        public string Nazwa { get; set; }
-        public string Film { get; set; }
+        public int ID { get; set; }
+        public string NazwaKarty { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grupa> Grupa { get; set; }
+        public virtual ICollection<KartyZajecia> KartyZajecia { get; set; }
     }
 }

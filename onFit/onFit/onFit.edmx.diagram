@@ -4,23 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dc796e9c6d084add8bc2df73c3ddc459" Name="Diagram1">
-        <EntityTypeShape EntityType="Main_onFitModel.Dla_Kogo" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Main_onFitModel.Dni" Width="1.5" PointX="2.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Main_onFitModel.Grupa" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Main_onFitModel.Karty_Szkoly_Intersekcja" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Main_onFitModel.Kiedy_Zajecia" Width="1.5" PointX="5" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Main_onFitModel.Poziomy" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Main_onFitModel.Szkoly" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Main_onFitModel.Typy_Kart" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Main_onFitModel.Typy_Tanca" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
-        <AssociationConnector Association="Main_onFitModel.FK_Grupa_DlaKogo" ManuallyRouted="false" />
-        <AssociationConnector Association="Main_onFitModel.FK_KiedyZajecia_Dzien" ManuallyRouted="false" />
-        <AssociationConnector Association="Main_onFitModel.FK_Grupa_Poziom" ManuallyRouted="false" />
-        <AssociationConnector Association="Main_onFitModel.FK_Grupa_Szkola" ManuallyRouted="false" />
-        <AssociationConnector Association="Main_onFitModel.FK_Grupa_TypTanca" ManuallyRouted="false" />
-        <AssociationConnector Association="Main_onFitModel.FK_KartySzkolyIntersekcja_Karta" ManuallyRouted="false" />
-        <AssociationConnector Association="Main_onFitModel.FK_KartySzkolyIntersekcja_Szkola" ManuallyRouted="false" />
+      <Diagram DiagramId="a2e17671648e4cd1a7e29d12fef5ff97" Name="Diagram1">
+        <EntityTypeShape EntityType="onFit.DBModel.Karty" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="onFit.DBModel.KartyZajecia" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="onFit.DBModel.MiejsceZajec" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="onFit.DBModel.NazwaZajec" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="onFit.DBModel.PoziomyZajec" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="onFit.DBModel.TerminyZajec" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="onFit.DBModel.Zajecia" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="onFit.DBModel.database_firewall_rules" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="onFit.DBModel.FK_KartyZajec_IDKarty" ManuallyRouted="false" />
+        <AssociationConnector Association="onFit.DBModel.FK_KartyZajec_IDZajecia" ManuallyRouted="false" />
+        <AssociationConnector Association="onFit.DBModel.FK_Zajecia_IDMiejsceZajec" ManuallyRouted="false" />
+        <AssociationConnector Association="onFit.DBModel.FK_Zajecia_IDNazwaZajec" ManuallyRouted="false" />
+        <AssociationConnector Association="onFit.DBModel.FK_Zajecia_IDPoziomZajec" ManuallyRouted="false" />
+        <AssociationConnector Association="onFit.DBModel.FK_TerminyZajec_IDZajec" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
