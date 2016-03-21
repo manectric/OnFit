@@ -2,6 +2,14 @@
     ViewBag.Title = "Strona główna";
 }*@
 
+<script>
+    HideFilters = function(d){
+        var parentelem = $(d).parent();
+        var parent2 = $(parentelem).parent();
+        var parent3 = $(parent2).find(".Filtry");
+        parent3.hide();
+        }
+</script>
      <!DOCTYPE html>
 <html>
 <head>
@@ -144,7 +152,7 @@
         </div>
         </div>
         <div class="row" style="margin-left:5%; margin-right:5%;">
-            <button class="button lighten primary full-size">Schowaj filtry</button>
+            <button class="button lighten primary full-size HideFiltersButton" onclick="HideFilters(this)">Schowaj filtry</button>
         </div>
        
             <div class="flex-grid condensed data-item data-item" data-role="listview" data-name="ELements" data-autolist="NoEmpty" style="height: 100px; margin-left:5%;  margin-right:5%;">
