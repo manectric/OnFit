@@ -10,22 +10,22 @@
 namespace onFit
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class NazwaZajec
+    public partial class GlobalFilter_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NazwaZajec()
-        {
-            this.Zajecia = new HashSet<Zajecia>();
-        }
-    
         public int ID { get; set; }
+        public int IDMiejsceZajec { get; set; }
+        public int IDNazwaZajec { get; set; }
+        public int IDPoziomZajec { get; set; }
+        public Nullable<int> MaxIloscMiejsc { get; set; }
+        public bool CzyWolneMiejsca { get; set; }
+        public int ID1 { get; set; }
+        public string Nazwa { get; set; }
+        public string Adres { get; set; }
+        public string Strona_WWW { get; set; }
+        public int ID2 { get; set; }
         public Nullable<int> IDParent { get; set; }
-        public string NazwaZajec1 { get; set; }
+        public string NazwaZajec { get; set; }
         public string OpisZajec { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zajecia> Zajecia { get; set; }
     }
 }
