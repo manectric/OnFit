@@ -18509,3 +18509,7 @@ video::-webkit-media-controls-enclosure {
   -webkit-transform: rotateY(-360deg);
           transform: rotateY(-360deg);
 }
+
+li {
+  display: inline;
+}

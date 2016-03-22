@@ -18,25 +18,41 @@
     <script src="~/Scripts/metro.js"></script>
 </head>
 
-<body>
-        <div class="grid Filtry" style="margin-left:5%; margin-right:5%;">
-            <div class="row cells10">
-                <div class="cell size4"><label>Na zajęcia będę dojeżdżać z: </label></div>
-                <div class="cell size2"><input type="text" style="margin-left:2%;" /></div>
-            </div>
-            <div class="row">
-                <div class="cell treeview" data-role="treeview">
-                    <ul>
-                        <li data-mode="radio" data-name="radio_name" data-checked="true" style="margin-left:5%;">
-                            <span class="leaf">Podaj nazwę zajęć, których szukasz: </span><input type="text" style="margin-left:2%;" />
-                        </li>
-                        <li data-mode="radio" data-name="radio_name" data-checked="false" style="margin-left:5%;">
-                            <span class="leaf">Lub wybierz z listy:</span>
-                        </li>
-                    </ul>
+<body style="background-color:dimgray;">
+        <div class="grid Filtry" style="margin-left:5%; margin-right:5%; background-color:darkgrey;">
+            <div class="row cells5">
+                <div class="cell">
+                    <div class="cell"><img src="~/Images/mission.jpg" /></div>
                 </div>
-            </div>
-            <div class="row cells2">
+                <div class="cell colspan4">
+                    <div class="row cells3">
+                        <div class="cell"><label>Na zajęcia będę dojeżdżać z: </label></div>
+                        <div class="cell"><input type="text"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" data-role="treeview">
+                            <ul>
+                                <li data-mode="radio" data-name="radio_name" data-checked="true" style="display:inline; margin-left:-5%;">
+                                    <span class="leaf">Podaj nazwę zajęć, których szukasz: </span><input type="text" style="margin-left:2%;" />
+                                </li>
+                                <li data-mode="radio" data-name="radio_name" data-checked="false" style="display:inline;">
+                                    <span class="leaf">Lub wybierz z listy:</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row cells4">
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell">Parentid=null</div>
+                        <div class="cell">Parentid!=null</div>
+                    </div>
+                </div>
+            </div>  
+            <div class="row">
+                <button class="button lighten primary full-size HideFiltersButton" onclick="HideFilters(this)">Schowaj filtry</button>
+            </div>        
+            @*<div class="row cells2">
                 <div class="cell treeview" data-role="treeview">
                     <ul>
 
@@ -87,63 +103,61 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="row cells2">
-                <div class="cell">
+            </div>*@
+            @*<div class="row cells10">
+               
                     <label>Wybierz poziom trudności:</label>
-                </div>
-                <div class="cell">
-                    <div class="cell treeview" data-role="treeview" style="height: 100px; overflow-y: scroll;">
+              
+                    <div class="cell treeview" data-role="treeview" style="height: 30px; overflow-y: scroll;">
                         <ul>
-                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                 <span class="leaf">Wszystkie</span>
                             </li>
-                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                 <span class="leaf">Początkujący</span>
                             </li>
-                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                 <span class="leaf">Średniozaawansowany</span>
                             </li>
-                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                 <span class="leaf">Początkujący</span>
                             </li>
-                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                            <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                 <span class="leaf">Średniozaawansowany</span>
                             </li>
                         </ul>
-                    </div>
-                </div>
+                    </div>*@             
             </div>
-            <div class="row cells2">
+           @* <div class="row cells2">
                 <div class="cell">
                     <label>W jakie dni chcesz chodzić na zajęcia? </label>
                 </div>
                 <div class="cell">
                     <div class="cell">
-                        <div class="cell treeview" data-role="treeview" style="height: 100px; overflow-y: scroll;">
+                        <div class="cell treeview" data-role="treeview" style="height: 30px; overflow-y: scroll;">
                             <ul>
-                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                     <span class="leaf">Wszystkie dni</span>
                                 </li>
-                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                     <span class="leaf">Poniedziałek</span>
                                 </li>
-                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                     <span class="leaf">Wtorek</span>
                                 </li>
-                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                     <span class="leaf">Środa</span>
                                 </li>
-                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                     <span class="leaf">Czwartek</span>
                                 </li>
-                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                     <span class="leaf">Piątek</span>
                                 </li>
-                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                     <span class="leaf">Sobota</span>
                                 </li>
-                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true">
+                                <li data-mode="checkbox" data-name="checkbox_name" data-checked="true" style="display:inline;">
                                     <span class="leaf">Niedziela</span>
                                 </li>
                             </ul>
@@ -153,11 +167,11 @@
             </div>
         </div>
         
-        <div class="row" style="margin-left:5%; margin-right:5%;">
+        @*<div class="row" style="margin-left:5%; margin-right:5%;">
             <button class="button lighten primary full-size HideFiltersButton" onclick="HideFilters(this)">Schowaj filtry</button>
-        </div>
+        </div>*@
 
-        <div class="flex-grid condensed data-item data-item" data-role="listview" data-name="ELements" data-autolist="NoEmpty" style="height: 100px; margin-left:5%;  margin-right:5%;">
+        @*<div class="flex-grid condensed data-item data-item" data-role="listview" data-name="ELements" data-autolist="NoEmpty" style="height: 100px; margin-left:5%;  margin-right:5%;">
             <div class="row row-template item-row item-ident">
                 <div class="cell size10">
                     <div class="flex-grid condensed">
@@ -231,8 +245,8 @@
                         <div class="row">
                             <div class="cell size5">Poziom trudności</div>
                             <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                        </div>
-                        <div class="row">
+                        </div>*@
+                        @*<div class="row">
                             <div class="cell size5">Akceptowane karty</div>
                             <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
                         </div>
@@ -257,8 +271,8 @@
                         <div class="row">
                             <div class="cell size5">Nazwa zajęć</div>
                             <div class="cell size5">Odległość</div>
-                        </div>
-                        <div class="row">
+                        </div>*@
+                        @*<div class="row">
                             <div class="cell size5">Poziom trudności</div>
                             <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
                         </div>
@@ -284,7 +298,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
 
 </body>
 </html>

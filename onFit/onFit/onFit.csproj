@@ -406,6 +406,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>onFit.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\mission.jpg" />
     <Content Include="onFit.edmx.diagram">
       <DependentUpon>onFit.edmx</DependentUpon>
     </Content>
