@@ -18,7 +18,6 @@ namespace onFit
         public Zajecia()
         {
             this.KartyZajecia = new HashSet<KartyZajecia>();
-            this.TerminyZajec = new HashSet<TerminyZajec>();
         }
     
         public int ID { get; set; }
@@ -33,7 +32,5 @@ namespace onFit
         public virtual MiejsceZajec MiejsceZajec { get; set; }
         public virtual NazwaZajec NazwaZajec { get; set; }
         public virtual PoziomyZajec PoziomyZajec { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TerminyZajec> TerminyZajec { get; set; }
     }
 }

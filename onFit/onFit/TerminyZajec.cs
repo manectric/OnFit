@@ -17,10 +17,8 @@ namespace onFit
         public int ID { get; set; }
         public int IDZajec { get; set; }
         public string DzienTygodnia { get; set; }
-        public System.DateTime GodzinaRozpoczecia { get; set; }
-        public System.DateTime GodzinaZakonczenia { get; set; }
+        public System.TimeSpan GodzinaRozpoczecia { get; set; }
+        public System.TimeSpan GodzinaZakonczenia { get; set; }
         public System.DateTime DataRozpoczeciaZajec { get; set; }
-    
-        public virtual Zajecia Zajecia { get; set; }
     }
 }
