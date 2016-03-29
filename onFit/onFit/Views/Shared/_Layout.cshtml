@@ -1,56 +1,56 @@
 ﻿<!DOCTYPE html>
 <html lang="pl">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - onFit</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-        <link href="@Url.Content("~/Content/css/fontello-embedded.css")" rel="stylesheet" type="text/css" />
-        <link href="@Url.Content("~/Content/bootflat/css/bootflat.css")" rel="stylesheet" type="text/css"/>
-        <link href="@Url.Content("~/Content/icheck-1.x/skins/all.css")" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-2.1.4.js")"></script>
-        <script type="text/javascript" src="@Url.Content("~/Scripts/js/application.js")"></script>
-        <script type="text/javascript" src="@Url.Content("~/Scripts/js/html5shiv.js")"></script>
-        <script type="text/javascript" src="@Url.Content("~/Scripts/icheck-1.x/icheck.js")"></script>
-    </head>
-    <body>
-        <header>
-            <div class="header-container">
-                @*<nav class="navbar-inverse" role="navigation">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - onFit</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/fontello-embedded.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootflat/css/bootflat.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/icheck-1.x/skins/all.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-2.1.4.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/application.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/js/html5shiv.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/icheck-1.x/icheck.js")"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            @*<nav class="navbar-inverse" role="navigation">
                     <div class="header-top-content">
                         <a href='@Url.Action("Index", "Home")'>
                             <i class="icon-home float-left" style="font-size: 18px; padding: 5px; color: white;"></i>
                         </a>
                     </div>
                 </nav>*@
-                
-                @*<div class="header-logo">
+
+            @*<div class="header-logo">
                     <a href='@Url.Action("Index", "Home")'>
                         <h1 style="text-align: center; vertical-align: middle"><span style="color: #343434">on</span><span style="color: #26e300">Fit</span></h1>
                     </a>
                 </div>*@
-            </div>
-        </header>
-        <div class="container">
-            @RenderSection("featured", required: false)
-            <section>
-                @RenderBody()
-            </section>
         </div>
-        @*<footer>
+    </header>
+    <div class="container">
+        @RenderSection("featured", required: false)
+        <section>
+            @RenderBody()
+        </section>
+    </div>
+    @*<footer>
             <div>
                 <div>
                     <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
                 </div>
             </div>
         </footer>*@
-    </body>
+</body>
 </html>
 
 <script>
-    
+
     //$(document).ready(function(){
     //    $('input').iCheck({
     //        checkboxClass: 'icheckbox_minimal',

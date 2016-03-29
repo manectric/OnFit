@@ -36,9 +36,9 @@ namespace onFit
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
         public virtual DbSet<TerminyZajec> TerminyZajec { get; set; }
     
-        public virtual ObjectResult<GlobalFilter_Result> GlobalFilter()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GlobalFilter_Result>("GlobalFilter");
-        }
+        //public virtual ObjectResult<GlobalFilter_Result> GlobalFilter()
+        //{
+        //    return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GlobalFilter_Result>("GlobalFilter");
+        //}
     }
 }
