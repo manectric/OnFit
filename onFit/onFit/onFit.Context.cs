@@ -35,10 +35,60 @@ namespace onFit
         public virtual DbSet<Zajecia> Zajecia { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
         public virtual DbSet<TerminyZajec> TerminyZajec { get; set; }
+        public virtual DbSet<KatalogMiejscowosci> KatalogMiejscowosci { get; set; }
+        public virtual DbSet<KatalogUlic> KatalogUlic { get; set; }
+        public virtual DbSet<PodzialAdministracyjny> PodzialAdministracyjny { get; set; }
     
-        //public virtual ObjectResult<GlobalFilter_Result> GlobalFilter()
-        //{
-        //    return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GlobalFilter_Result>("GlobalFilter");
-        //}
+        public virtual ObjectResult<CityFilter_Result> CityFilter(string miejscowosc)
+        {
+            var miejscowoscParameter = miejscowosc != null ?
+                new ObjectParameter("Miejscowosc", miejscowosc) :
+                new ObjectParameter("Miejscowosc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CityFilter_Result>("CityFilter", miejscowoscParameter);
+        }
+    
+        public virtual ObjectResult<StreetFilter_Result> StreetFilter(string cecha, Nullable<int> wojewodztwo, Nullable<int> powiat)
+        {
+            var cechaParameter = cecha != null ?
+                new ObjectParameter("Cecha", cecha) :
+                new ObjectParameter("Cecha", typeof(string));
+    
+            var wojewodztwoParameter = wojewodztwo.HasValue ?
+                new ObjectParameter("Wojewodztwo", wojewodztwo) :
+                new ObjectParameter("Wojewodztwo", typeof(int));
+    
+            var powiatParameter = powiat.HasValue ?
+                new ObjectParameter("Powiat", powiat) :
+                new ObjectParameter("Powiat", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetFilter_Result>("StreetFilter", cechaParameter, wojewodztwoParameter, powiatParameter);
+        }
+    
+        public virtual ObjectResult<CityFilter_Result> CityFilter1(string miejscowosc)
+        {
+            var miejscowoscParameter = miejscowosc != null ?
+                new ObjectParameter("Miejscowosc", miejscowosc) :
+                new ObjectParameter("Miejscowosc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CityFilter_Result>("CityFilter1", miejscowoscParameter);
+        }
+    
+        public virtual ObjectResult<StreetFilter_Result> StreetFilter1(string cecha, Nullable<int> wojewodztwo, Nullable<int> powiat)
+        {
+            var cechaParameter = cecha != null ?
+                new ObjectParameter("Cecha", cecha) :
+                new ObjectParameter("Cecha", typeof(string));
+    
+            var wojewodztwoParameter = wojewodztwo.HasValue ?
+                new ObjectParameter("Wojewodztwo", wojewodztwo) :
+                new ObjectParameter("Wojewodztwo", typeof(int));
+    
+            var powiatParameter = powiat.HasValue ?
+                new ObjectParameter("Powiat", powiat) :
+                new ObjectParameter("Powiat", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetFilter_Result>("StreetFilter1", cechaParameter, wojewodztwoParameter, powiatParameter);
+        }
     }
 }

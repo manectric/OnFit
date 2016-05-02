@@ -202,6 +202,9 @@
     <Compile Include="App_Start\MetroUICSSBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="CityFilter_Result.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="database_firewall_rules.cs">
@@ -215,6 +218,12 @@
       <DependentUpon>onFit.tt</DependentUpon>
     </Compile>
     <Compile Include="KartyZajecia.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KatalogMiejscowosci.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KatalogUlic.cs">
       <DependentUpon>onFit.tt</DependentUpon>
     </Compile>
     <Compile Include="MiejsceZajec.cs">
@@ -239,10 +248,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>onFit.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PodzialAdministracyjny.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
     <Compile Include="PoziomyZajec.cs">
       <DependentUpon>onFit.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StreetFilter_Result.cs">
+      <DependentUpon>onFit.tt</DependentUpon>
+    </Compile>
     <Compile Include="TerminyZajec.cs">
       <DependentUpon>onFit.tt</DependentUpon>
     </Compile>
@@ -265,6 +280,7 @@
     <Content Include="Content\css\fontello-ie7-codes.css" />
     <Content Include="Content\css\fontello-ie7.css" />
     <Content Include="Content\css\fontello.css" />
+    <Content Include="Content\css\jquery-autocomplete.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\site.min.css" />
     <Content Include="Content\fonts\fontello.svg" />
@@ -422,6 +438,8 @@
       <DependentUpon>onFit.edmx</DependentUpon>
       <LastGenOutput>onFit.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\autocomplete\jquery-autocomplete.js" />
+    <Content Include="Scripts\autocomplete\jquery-autocomplete.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />

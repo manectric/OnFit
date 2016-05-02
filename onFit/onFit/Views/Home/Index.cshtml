@@ -2,26 +2,14 @@
         ViewBag.Title = "Strona główna";
     }*@
 
-<script>
-    HideFilters = function (d) {
-       var parentelem = $(d).parent();
-        var parent2 = $(parentelem).parent();
-        parent2.hide();
-        var results = $(parent2).parent();
-        var results2 = $(results).find(".Results");
-        results2.removeClass("no-visible");
-
-        var navigation = $(results).find(".HeaderFilter");
-        navigation.removeClass("no-visible");
-
-        }
-</script>
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="~/Content/metro.css" rel="stylesheet">
+    <link href="~/Content/metro.css" rel="stylesheet"/>
+    <link href="~/Content/css/jquery-autocomplete.css" rel="stylesheet"/>
     <script src="jquery.js"></script>
     <script src="~/Scripts/metro.js"></script>
+    <script src="~/Scripts/autocomplete/jquery-autocomplete.js"></script>
 </head>
 
 <body style="background-image:url('@Url.Content("~/images/dziwnypan.png")'); margin-left:5%; margin-right:5%;">
@@ -345,8 +333,8 @@
             <div class="cell colspan4" style="margin-top:2%;">
                 <div class="row cells3">
                     <div class="cell"><label style="color:white; font-size:larger;">Na zajęcia będę dojeżdżać z: </label></div>
-                    <div class="cell"><input type="text" placeholder="Np. Warszawa," style="width:80%;" /></div>
-                    <div class="cell"><input type="text" placeholder="Np. Złota 1" style="width:80%;" /></div>
+                    <div class="cell"><input class="city-picker" type="text" placeholder="Np. Warszawa," style="width:80%;" /></div>
+                    <div class="cell"><input class="street-picker" disabled="disabled" type="text" placeholder="Np. Złota 1" style="width:80%;" /></div>
                 </div>
                 <div class="row cells3">
                     <div class="cell"><label style="color:white;font-size:larger;">Podaj nazwę zajęć: </label></div>
@@ -851,8 +839,70 @@
                         </div>
                     </div>
                 </div>
-
-     
-
 </body>
 </html>
+<script>
+    HideFilters = function(d) {
+        var parentelem = $(d).parent();
+        var parent2 = $(parentelem).parent();
+        parent2.hide();
+        var results = $(parent2).parent();
+        var results2 = $(results).find(".Results");
+        results2.removeClass("no-visible");
+
+        var navigation = $(results).find(".HeaderFilter");
+        navigation.removeClass("no-visible");
+
+    }
+
+    $(".city-picker").keyup(function () {
+        var _array = [];
+        var obj = {};
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "POST",
+                url: "@(Url.Action("CityFilter", "Home"))",
+                data: { "searchString": $(".city-picker").val() },
+                success: function(data) {
+                $.each(data, function (i, item) {
+                    obj =
+                    {
+                        value: item.cityName,
+                        label: item.cityName,
+                        cityCounty: item.cityCounty,
+                        cityProvince: item.cityProvince,
+                        cityID: item.cityID
+                    };
+                    _array.push(obj);
+                });
+
+                $(".city-picker").autocomplete({
+                    minLength: 2,
+                    source: _array,
+                    select: function (ul, item) {
+                        $($(this)).attr("data-city-county", item.item.cityCounty);
+                        $($(this)).attr("data-city-province", item.item.cityProvince);
+                        $(".street-picker").removeAttr("disabled");
+                    }
+                }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                    ul.addClass("city-autocomplete");
+                    return $("<li></li>").data("item.autocomplete", item)
+                        .append("<a data-city-id="+item.cityID+" data-city-county="+item.cityCounty+" data-city-province="+item.cityProvince+">"+item.label+"</a>")
+                        .appendTo(ul);
+                };
+            }
+        });
+    });
+
+    $(".city-picker").on("change paste keyup", function () {
+        var attr = $(this).attr('data-city-county');
+        if (typeof attr !== typeof undefined && attr !== false) {
+            $(this).removeAttr("data-city-county");
+            $(this).removeAttr("data-city-province");
+            $(".street-picker").attr("disabled", "disabled");
+        }
+    });
+
+
+</script>

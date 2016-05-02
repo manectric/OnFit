@@ -20,6 +20,36 @@
           <Property Name="IDZajecia" Type="int" Nullable="false" />
           <Property Name="IDKarty" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="KatalogMiejscowosci">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Wojewodztwo" Type="int" />
+          <Property Name="Powiat" Type="int" />
+          <Property Name="Gmina" Type="int" />
+          <Property Name="RodzajGminy" Type="int" />
+          <Property Name="RZ" Type="int" />
+          <Property Name="MZ" Type="int" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="10" />
+          <Property Name="SymbolPod" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="KatalogUlic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Wojewodztwo" Type="int" />
+          <Property Name="Powiat" Type="int" />
+          <Property Name="Gmina" Type="int" />
+          <Property Name="RodzajGminy" Type="int" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="10" />
+          <Property Name="SymbolUl" Type="nvarchar" MaxLength="10" />
+          <Property Name="Cecha" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="100" />
+          <Property Name="NazwaDodatkowa" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="MiejsceZajec">
           <Key>
             <PropertyRef Name="ID" />
@@ -37,6 +67,18 @@
           <Property Name="IDParent" Type="int" />
           <Property Name="NazwaZajec" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="OpisZajec" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PodzialAdministracyjny">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Wojewodztwo" Type="int" />
+          <Property Name="Powiat" Type="int" />
+          <Property Name="Gmina" Type="int" />
+          <Property Name="Rodzaj" Type="int" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="NazwaDodatkowa" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PoziomyZajec">
           <Key>
@@ -145,12 +187,22 @@ warning 6002: The table/view 'onFit.DB.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="GlobalFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CityFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Miejscowosc" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="StreetFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cecha" Type="nvarchar" Mode="In" />
+          <Parameter Name="Wojewodztwo" Type="int" Mode="In" />
+          <Parameter Name="Powiat" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="onFitDBModelStoreContainer">
           <EntitySet Name="Karty" EntityType="Self.Karty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KartyZajecia" EntityType="Self.KartyZajecia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KatalogMiejscowosci" EntityType="Self.KatalogMiejscowosci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KatalogUlic" EntityType="Self.KatalogUlic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MiejsceZajec" EntityType="Self.MiejsceZajec" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NazwaZajec" EntityType="Self.NazwaZajec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PodzialAdministracyjny" EntityType="Self.PodzialAdministracyjny" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoziomyZajec" EntityType="Self.PoziomyZajec" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TerminyZajec" EntityType="Self.TerminyZajec" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zajecia" EntityType="Self.Zajecia" Schema="dbo" store:Type="Tables" />
@@ -354,25 +406,27 @@ warning 6002: The table/view 'onFit.DB.sys.database_firewall_rules' does not hav
             <End Role="PoziomyZajec" EntitySet="PoziomyZajec" />
             <End Role="Zajecia" EntitySet="Zajecia" />
           </AssociationSet>
-          <FunctionImport Name="GlobalFilter" ReturnType="Collection(onFit.DBModel.GlobalFilter_Result)" />
           <EntitySet Name="TerminyZajec" EntityType="onFit.DBModel.TerminyZajec" />
+          <EntitySet Name="KatalogMiejscowosci" EntityType="onFit.DBModel.KatalogMiejscowosci" />
+          <EntitySet Name="KatalogUlic" EntityType="onFit.DBModel.KatalogUlic" />
+          <EntitySet Name="PodzialAdministracyjny" EntityType="onFit.DBModel.PodzialAdministracyjny" />
+          <FunctionImport Name="CityFilter" ReturnType="Collection(onFit.DBModel.CityFilter_Result)">
+            <Parameter Name="Miejscowosc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="StreetFilter" ReturnType="Collection(onFit.DBModel.StreetFilter_Result)">
+            <Parameter Name="Cecha" Mode="In" Type="String" />
+            <Parameter Name="Wojewodztwo" Mode="In" Type="Int32" />
+            <Parameter Name="Powiat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CityFilter1" ReturnType="Collection(onFit.DBModel.CityFilter_Result)">
+            <Parameter Name="Miejscowosc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="StreetFilter1" ReturnType="Collection(onFit.DBModel.StreetFilter_Result)">
+            <Parameter Name="Cecha" Mode="In" Type="String" />
+            <Parameter Name="Wojewodztwo" Mode="In" Type="Int32" />
+            <Parameter Name="Powiat" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="GlobalFilter_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="Int32" Name="IDMiejsceZajec" Nullable="false" />
-          <Property Type="Int32" Name="IDNazwaZajec" Nullable="false" />
-          <Property Type="Int32" Name="IDPoziomZajec" Nullable="false" />
-          <Property Type="Int32" Name="MaxIloscMiejsc" Nullable="true" />
-          <Property Type="Boolean" Name="CzyWolneMiejsca" Nullable="false" />
-          <Property Type="Int32" Name="ID1" Nullable="false" />
-          <Property Type="String" Name="Nazwa" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Adres" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Strona_WWW" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="ID2" Nullable="false" />
-          <Property Type="Int32" Name="IDParent" Nullable="true" />
-          <Property Type="String" Name="NazwaZajec" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="OpisZajec" Nullable="true" MaxLength="500" />
-        </ComplexType>
         <EntityType Name="TerminyZajec">
           <Key>
             <PropertyRef Name="ID" />
@@ -384,6 +438,72 @@ warning 6002: The table/view 'onFit.DB.sys.database_firewall_rules' does not hav
           <Property Name="GodzinaZakonczenia" Type="Time" Nullable="false" Precision="7" />
           <Property Name="DataRozpoczeciaZajec" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
+        <EntityType Name="KatalogMiejscowosci">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Wojewodztwo" Type="Int32" />
+          <Property Name="Powiat" Type="Int32" />
+          <Property Name="Gmina" Type="Int32" />
+          <Property Name="RodzajGminy" Type="Int32" />
+          <Property Name="RZ" Type="Int32" />
+          <Property Name="MZ" Type="Int32" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Symbol" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SymbolPod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="KatalogUlic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Wojewodztwo" Type="Int32" />
+          <Property Name="Powiat" Type="Int32" />
+          <Property Name="Gmina" Type="Int32" />
+          <Property Name="RodzajGminy" Type="Int32" />
+          <Property Name="Symbol" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SymbolUl" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Cecha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NazwaDodatkowa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PodzialAdministracyjny">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Wojewodztwo" Type="Int32" />
+          <Property Name="Powiat" Type="Int32" />
+          <Property Name="Gmina" Type="Int32" />
+          <Property Name="Rodzaj" Type="Int32" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NazwaDodatkowa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="CityFilter_Result">
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="Wojewodztwo" Nullable="true" />
+          <Property Type="Int32" Name="Powiat" Nullable="true" />
+          <Property Type="Int32" Name="Gmina" Nullable="true" />
+          <Property Type="Int32" Name="RodzajGminy" Nullable="true" />
+          <Property Type="Int32" Name="RZ" Nullable="true" />
+          <Property Type="Int32" Name="MZ" Nullable="true" />
+          <Property Type="String" Name="Nazwa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Symbol" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="SymbolPod" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="StreetFilter_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="Wojewodztwo" Nullable="true" />
+          <Property Type="Int32" Name="Powiat" Nullable="true" />
+          <Property Type="Int32" Name="Gmina" Nullable="true" />
+          <Property Type="Int32" Name="RodzajGminy" Nullable="true" />
+          <Property Type="String" Name="Symbol" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="SymbolUl" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Cecha" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nazwa" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NazwaDodatkowa" Nullable="true" MaxLength="100" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -459,26 +579,6 @@ warning 6002: The table/view 'onFit.DB.sys.database_firewall_rules' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GlobalFilter" FunctionName="onFit.DBModel.Store.GlobalFilter">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="onFit.DBModel.GlobalFilter_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDMiejsceZajec" ColumnName="IDMiejsceZajec" />
-                <ScalarProperty Name="IDNazwaZajec" ColumnName="IDNazwaZajec" />
-                <ScalarProperty Name="IDPoziomZajec" ColumnName="IDPoziomZajec" />
-                <ScalarProperty Name="MaxIloscMiejsc" ColumnName="MaxIloscMiejsc" />
-                <ScalarProperty Name="CzyWolneMiejsca" ColumnName="CzyWolneMiejsca" />
-                <ScalarProperty Name="ID1" ColumnName="ID1" />
-                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
-                <ScalarProperty Name="Adres" ColumnName="Adres" />
-                <ScalarProperty Name="Strona_WWW" ColumnName="Strona_WWW" />
-                <ScalarProperty Name="ID2" ColumnName="ID2" />
-                <ScalarProperty Name="IDParent" ColumnName="IDParent" />
-                <ScalarProperty Name="NazwaZajec" ColumnName="NazwaZajec" />
-                <ScalarProperty Name="OpisZajec" ColumnName="OpisZajec" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="TerminyZajec">
             <EntityTypeMapping TypeName="onFit.DBModel.TerminyZajec">
               <MappingFragment StoreEntitySet="TerminyZajec">
@@ -491,7 +591,116 @@ warning 6002: The table/view 'onFit.DB.sys.database_firewall_rules' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="KatalogMiejscowosci">
+            <EntityTypeMapping TypeName="onFit.DBModel.KatalogMiejscowosci">
+              <MappingFragment StoreEntitySet="KatalogMiejscowosci">
+                <ScalarProperty Name="SymbolPod" ColumnName="SymbolPod" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="MZ" ColumnName="MZ" />
+                <ScalarProperty Name="RZ" ColumnName="RZ" />
+                <ScalarProperty Name="RodzajGminy" ColumnName="RodzajGminy" />
+                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KatalogUlic">
+            <EntityTypeMapping TypeName="onFit.DBModel.KatalogUlic">
+              <MappingFragment StoreEntitySet="KatalogUlic">
+                <ScalarProperty Name="NazwaDodatkowa" ColumnName="NazwaDodatkowa" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Cecha" ColumnName="Cecha" />
+                <ScalarProperty Name="SymbolUl" ColumnName="SymbolUl" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="RodzajGminy" ColumnName="RodzajGminy" />
+                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PodzialAdministracyjny">
+            <EntityTypeMapping TypeName="onFit.DBModel.PodzialAdministracyjny">
+              <MappingFragment StoreEntitySet="PodzialAdministracyjny">
+                <ScalarProperty Name="NazwaDodatkowa" ColumnName="NazwaDodatkowa" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Rodzaj" ColumnName="Rodzaj" />
+                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CityFilter" FunctionName="onFit.DBModel.Store.CityFilter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="onFit.DBModel.CityFilter_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+                <ScalarProperty Name="RodzajGminy" ColumnName="RodzajGminy" />
+                <ScalarProperty Name="RZ" ColumnName="RZ" />
+                <ScalarProperty Name="MZ" ColumnName="MZ" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="SymbolPod" ColumnName="SymbolPod" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StreetFilter" FunctionName="onFit.DBModel.Store.StreetFilter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="onFit.DBModel.StreetFilter_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+                <ScalarProperty Name="RodzajGminy" ColumnName="RodzajGminy" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="SymbolUl" ColumnName="SymbolUl" />
+                <ScalarProperty Name="Cecha" ColumnName="Cecha" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="NazwaDodatkowa" ColumnName="NazwaDodatkowa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CityFilter1" FunctionName="onFit.DBModel.Store.CityFilter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="onFit.DBModel.CityFilter_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+                <ScalarProperty Name="RodzajGminy" ColumnName="RodzajGminy" />
+                <ScalarProperty Name="RZ" ColumnName="RZ" />
+                <ScalarProperty Name="MZ" ColumnName="MZ" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="SymbolPod" ColumnName="SymbolPod" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StreetFilter1" FunctionName="onFit.DBModel.Store.StreetFilter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="onFit.DBModel.StreetFilter_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+                <ScalarProperty Name="RodzajGminy" ColumnName="RodzajGminy" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="SymbolUl" ColumnName="SymbolUl" />
+                <ScalarProperty Name="Cecha" ColumnName="Cecha" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="NazwaDodatkowa" ColumnName="NazwaDodatkowa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

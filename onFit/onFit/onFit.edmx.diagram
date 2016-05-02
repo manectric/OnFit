@@ -18,6 +18,9 @@
         <AssociationConnector Association="onFit.DBModel.FK_Zajecia_IDNazwaZajec" ManuallyRouted="false" />
         <AssociationConnector Association="onFit.DBModel.FK_Zajecia_IDPoziomZajec" ManuallyRouted="false" />
         <EntityTypeShape EntityType="onFit.DBModel.TerminyZajec" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="onFit.DBModel.KatalogMiejscowosci" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="onFit.DBModel.KatalogUlic" Width="1.5" PointX="9.375" PointY="5.75" />
+        <EntityTypeShape EntityType="onFit.DBModel.PodzialAdministracyjny" Width="1.5" PointX="5.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
