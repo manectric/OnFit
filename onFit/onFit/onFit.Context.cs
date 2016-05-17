@@ -48,23 +48,6 @@ namespace onFit
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CityFilter_Result>("CityFilter", miejscowoscParameter);
         }
     
-        public virtual ObjectResult<StreetFilter_Result> StreetFilter(string cecha, Nullable<int> wojewodztwo, Nullable<int> powiat)
-        {
-            var cechaParameter = cecha != null ?
-                new ObjectParameter("Cecha", cecha) :
-                new ObjectParameter("Cecha", typeof(string));
-    
-            var wojewodztwoParameter = wojewodztwo.HasValue ?
-                new ObjectParameter("Wojewodztwo", wojewodztwo) :
-                new ObjectParameter("Wojewodztwo", typeof(int));
-    
-            var powiatParameter = powiat.HasValue ?
-                new ObjectParameter("Powiat", powiat) :
-                new ObjectParameter("Powiat", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetFilter_Result>("StreetFilter", cechaParameter, wojewodztwoParameter, powiatParameter);
-        }
-    
         public virtual ObjectResult<CityFilter_Result> CityFilter1(string miejscowosc)
         {
             var miejscowoscParameter = miejscowosc != null ?
@@ -74,11 +57,11 @@ namespace onFit
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CityFilter_Result>("CityFilter1", miejscowoscParameter);
         }
     
-        public virtual ObjectResult<StreetFilter_Result> StreetFilter1(string cecha, Nullable<int> wojewodztwo, Nullable<int> powiat)
+        public virtual ObjectResult<StreetFilter_Result> StreetFilter(string nazwa, Nullable<int> wojewodztwo, Nullable<int> powiat)
         {
-            var cechaParameter = cecha != null ?
-                new ObjectParameter("Cecha", cecha) :
-                new ObjectParameter("Cecha", typeof(string));
+            var nazwaParameter = nazwa != null ?
+                new ObjectParameter("Nazwa", nazwa) :
+                new ObjectParameter("Nazwa", typeof(string));
     
             var wojewodztwoParameter = wojewodztwo.HasValue ?
                 new ObjectParameter("Wojewodztwo", wojewodztwo) :
@@ -88,7 +71,24 @@ namespace onFit
                 new ObjectParameter("Powiat", powiat) :
                 new ObjectParameter("Powiat", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetFilter_Result>("StreetFilter1", cechaParameter, wojewodztwoParameter, powiatParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetFilter_Result>("StreetFilter", nazwaParameter, wojewodztwoParameter, powiatParameter);
+        }
+    
+        public virtual ObjectResult<StreetFilter_Result> StreetFilter1(string nazwa, Nullable<int> wojewodztwo, Nullable<int> powiat)
+        {
+            var nazwaParameter = nazwa != null ?
+                new ObjectParameter("Nazwa", nazwa) :
+                new ObjectParameter("Nazwa", typeof(string));
+    
+            var wojewodztwoParameter = wojewodztwo.HasValue ?
+                new ObjectParameter("Wojewodztwo", wojewodztwo) :
+                new ObjectParameter("Wojewodztwo", typeof(int));
+    
+            var powiatParameter = powiat.HasValue ?
+                new ObjectParameter("Powiat", powiat) :
+                new ObjectParameter("Powiat", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetFilter_Result>("StreetFilter1", nazwaParameter, wojewodztwoParameter, powiatParameter);
         }
     }
 }

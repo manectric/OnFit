@@ -191,7 +191,7 @@ warning 6002: The table/view 'onFit.DB.sys.database_firewall_rules' does not hav
           <Parameter Name="Miejscowosc" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="StreetFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Cecha" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nazwa" Type="nvarchar" Mode="In" />
           <Parameter Name="Wojewodztwo" Type="int" Mode="In" />
           <Parameter Name="Powiat" Type="int" Mode="In" />
         </Function>
@@ -411,18 +411,18 @@ warning 6002: The table/view 'onFit.DB.sys.database_firewall_rules' does not hav
           <EntitySet Name="KatalogUlic" EntityType="onFit.DBModel.KatalogUlic" />
           <EntitySet Name="PodzialAdministracyjny" EntityType="onFit.DBModel.PodzialAdministracyjny" />
           <FunctionImport Name="CityFilter" ReturnType="Collection(onFit.DBModel.CityFilter_Result)">
-            <Parameter Name="Miejscowosc" Mode="In" Type="String" />
+          <Parameter Name="Miejscowosc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CityFilter1" ReturnType="Collection(onFit.DBModel.CityFilter_Result)">
+          <Parameter Name="Miejscowosc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="StreetFilter" ReturnType="Collection(onFit.DBModel.StreetFilter_Result)">
-            <Parameter Name="Cecha" Mode="In" Type="String" />
+            <Parameter Name="Nazwa" Mode="In" Type="String" />
             <Parameter Name="Wojewodztwo" Mode="In" Type="Int32" />
             <Parameter Name="Powiat" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="CityFilter1" ReturnType="Collection(onFit.DBModel.CityFilter_Result)">
-            <Parameter Name="Miejscowosc" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="StreetFilter1" ReturnType="Collection(onFit.DBModel.StreetFilter_Result)">
-            <Parameter Name="Cecha" Mode="In" Type="String" />
+            <Parameter Name="Nazwa" Mode="In" Type="String" />
             <Parameter Name="Wojewodztwo" Mode="In" Type="Int32" />
             <Parameter Name="Powiat" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -652,22 +652,6 @@ warning 6002: The table/view 'onFit.DB.sys.database_firewall_rules' does not hav
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="StreetFilter" FunctionName="onFit.DBModel.Store.StreetFilter">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="onFit.DBModel.StreetFilter_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
-                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
-                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
-                <ScalarProperty Name="RodzajGminy" ColumnName="RodzajGminy" />
-                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
-                <ScalarProperty Name="SymbolUl" ColumnName="SymbolUl" />
-                <ScalarProperty Name="Cecha" ColumnName="Cecha" />
-                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
-                <ScalarProperty Name="NazwaDodatkowa" ColumnName="NazwaDodatkowa" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CityFilter1" FunctionName="onFit.DBModel.Store.CityFilter">
             <ResultMapping>
               <ComplexTypeMapping TypeName="onFit.DBModel.CityFilter_Result">
@@ -681,6 +665,22 @@ warning 6002: The table/view 'onFit.DB.sys.database_firewall_rules' does not hav
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
                 <ScalarProperty Name="Symbol" ColumnName="Symbol" />
                 <ScalarProperty Name="SymbolPod" ColumnName="SymbolPod" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StreetFilter" FunctionName="onFit.DBModel.Store.StreetFilter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="onFit.DBModel.StreetFilter_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+                <ScalarProperty Name="RodzajGminy" ColumnName="RodzajGminy" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="SymbolUl" ColumnName="SymbolUl" />
+                <ScalarProperty Name="Cecha" ColumnName="Cecha" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="NazwaDodatkowa" ColumnName="NazwaDodatkowa" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

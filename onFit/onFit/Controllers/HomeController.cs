@@ -39,10 +39,29 @@ namespace onFit.Controllers
             {
                 _cityList = context.CityFilter(searchString).ToList();
             }
-            var customers = from o in _cityList
+            var customCityItems = from o in _cityList
                             select new { cityName = o.Nazwa, cityID = o.ID, cityCounty = o.Powiat, cityProvince = o.Wojewodztwo };
 
-            return Json(customers.ToList(), JsonRequestBehavior.AllowGet);
+            return Json(customCityItems.ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult StreetFilter(string searchString, string wojewodztwo, string powiat)
+        {
+            List<StreetFilter_Result> _streetList = new List<StreetFilter_Result>();
+
+            int pow, woj;
+
+            pow = int.Parse(powiat);
+            woj = int.Parse(wojewodztwo);
+
+            using (Entities context = new Entities())
+            {
+                _streetList = context.StreetFilter(searchString, woj, pow).ToList();
+            }
+            var customStreetItems = from o in _streetList
+                                    select new { streetName = o.Nazwa };
+
+            return Json(customStreetItems.ToList(), JsonRequestBehavior.AllowGet);
         }
     }
 }
