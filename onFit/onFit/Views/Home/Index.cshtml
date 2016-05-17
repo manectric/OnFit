@@ -1,7 +1,39 @@
 ﻿@*@{
         ViewBag.Title = "Strona główna";
     }*@
+<script>
+    HideFilters = function (d) {
 
+        // jak miasto jest podane - wybrane z listy
+       var parentelem = $(d).parent();
+        var parent2 = $(parentelem).parent();
+        parent2.hide();
+        var results = $(parent2).parent();
+        var results2 = $(results).find(".Results");
+        results2.removeClass("no-visible");
+        results2.height(500);
+
+        console && console.log(results2);
+        var navigation = $(results).find(".HeaderFilter");
+        navigation.removeClass("no-visible");
+
+    }
+
+    ActivityListcheck = function (e) {
+        var parentelem = $(e).parent();      
+        var parent2 = $(parentelem).parent();
+        var parent3 = $(parent2).parent();
+        var parent4 = $(parent3).parent();
+        var results2 = $(parent4).find(".ActivityChildList");
+        results2.removeClass("no-visible");
+
+    }
+
+    ShowDetails = function (f) {
+       
+        window.open('Details');
+    }
+</script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,18 +48,18 @@
 <body style="background-image:url('@Url.Content("~/images/dziwnypan.png")'); margin-left:5%; margin-right:5%;">
     <div class="grid HeaderFilter no-visible" style="background-color:cadetblue;">
         <div class="row">
-            <button>Zmien zajęcia i/lub miejsce zamieszkania</button>
+            <button  class="button lighten primary full-size HideFiltersButton">Zmien zajęcia i/lub miejsce zamieszkania</button>
         </div>
-        <div class="row cells7">
-            <div class="cell" style="margin-top:2%; color:white;">Pozim trudności</div>
-            <div class="cell" style="margin-top:2%; color:white;">Dzień zajęć</div>
-            <div class="cell" style="margin-top:2%; color:white;">Godzina zajęć</div>
-            <div class="cell" style="margin-top:2%; color:white;">Ilość osób w grupie</div>
-            <div class="cell" style="margin-top:2%; color:white;">Akceptowane karty</div>
-            <div class="cell" style="margin-top:2%; color:white;">Temin pierwszych zajęć</div>
-            <div class="cell" style="margin-top:2%; color:white;">Odległość</div>         
+        <div class="row cells7" >
+            <div class="cell" style="font-size:small; color:white;">Pozim trudności</div>
+            <div class="cell" style="font-size:small; color:white;">Dzień zajęć</div>
+            <div class="cell" style="font-size:small; color:white;">Godzina zajęć</div>
+            <div class="cell" style="font-size:small; color:white;">Ilość osób w grupie</div>
+            <div class="cell" style="font-size:small; color:white;">Akceptowane karty</div>
+            <div class="cell" style="font-size:small; color:white;">Temin pierwszych zajęć</div>
+            <div class="cell" style="font-size:small; color:white;">Odległość</div>         
         </div>
-        <div class="row cells7">
+        <div class="row cells7" style="font-size:small;">
             <div class="cell" style="height: 70px;  overflow-y: scroll; color:white;">
                 <div class="row">
                     <label class="input-control checkbox small-check">
@@ -120,7 +152,7 @@
                 <div class="row">
                     <label class="input-control checkbox small-check">
                         <input type="checkbox" unchecked>
-                        <span class="check"></span>
+                        <span class="check"></span>Na zajęcia będę dojeżdżać z:
                         <span class="caption">Zaznacz wszystko</span>
                     </label>
                 </div>
@@ -326,12 +358,12 @@
         <div class="row"></div>
       
     </div>
-    <div class="grid PrevFilters" style="margin-left:5%; margin-right:5%; background-color:cadetblue;">
-        <div class="row cells5">
+   <div class="grid PrevFilters" style="margin-left:5%; margin-right:5%; margin-top:-10%; background-color:cadetblue;">
+        <div class="row cells5" style="margin-top:-10%;">
             <div class="cell">
-                <div class="cell"><img src="~/Images/mission.jpg" /></div>
+                <div class="cell" style="margin-top:-35%;"><img src="~/Images/mission.jpg" /></div>
             </div>
-            <div class="cell colspan4" style="margin-top:2%;">
+            <div class="cell colspan4" style="margin-top:-5%;">
                 <div class="row cells3">
                     <div class="cell"><label style="color:white; font-size:larger;">Na zajęcia będę dojeżdżać z: </label></div>
                     <div class="cell"><input class="city-picker" type="text" placeholder="Np. Warszawa," style="width:80%;" /></div>
@@ -350,43 +382,43 @@
             <div class="cell"></div>
             <div class="cell ActivityList" style="height: 120px;  overflow-y: scroll; color:white;">
                 <div class="row">
-                    <label class="input-control checkbox small-check">
-                        <input type="checkbox" unchecked>
+                    <label class="input-control checkbox small-check ActivityListcheck">
+                        <input type="checkbox" unchecked onclick="ActivityListcheck(this)">
                         <span class="check"></span>
                         <span class="caption">Zaznacz wszystko</span>
                     </label>
                 </div>
                 <div class="row">
-                    <label class="input-control checkbox small-check">
-                        <input type="checkbox" unchecked>
+                    <label class="input-control checkbox small-check ActivityListcheck">
+                        <input type="checkbox" unchecked onclick="ActivityListcheck(this)">
                         <span class="check"></span>
                         <span class="caption">Basen</span>
                     </label>
                 </div>
                 <div class="row">
-                    <label class="input-control checkbox small-check">
-                        <input type="checkbox" unchecked>
+                    <label class="input-control checkbox small-check ActivityListcheck">
+                        <input type="checkbox" unchecked onclick="ActivityListcheck(this)">
                         <span class="check"></span>
                         <span class="caption">Siłownia</span>
                     </label>
                 </div>
                 <div class="row">
-                    <label class="input-control checkbox small-check">
-                        <input type="checkbox" unchecked>
+                    <label class="input-control checkbox small-check ActivityListcheck">
+                        <input type="checkbox" unchecked onclick="ActivityListcheck(this)">
                         <span class="check"></span>
                         <span class="caption">Taniec</span>
                     </label>
                 </div>
                 <div class="row">
-                    <label class="input-control checkbox small-check">
-                        <input type="checkbox" unchecked>
+                    <label class="input-control checkbox small-check ActivityListcheck">
+                        <input type="checkbox" unchecked onclick="ActivityListcheck(this)">
                         <span class="check"></span>
                         <span class="caption">Ścianka wspinaczkowa</span>
                     </label>
                 </div>
                 <div class="row">
-                    <label class="input-control checkbox small-check">
-                        <input type="checkbox" unchecked>
+                    <label class="input-control checkbox small-check ActivityListcheck">
+                        <input type="checkbox" unchecked onclick="ActivityListcheck(this)">
                         <span class="check"></span>
                         <span class="caption">Jazda konna</span>
                     </label>
@@ -441,405 +473,165 @@
             <button class="button lighten primary full-size HideFiltersButton" style="font-size:larger;" onclick="HideFilters(this)">Pokaż</button>
         </div>
     </div>
-  
-    <div class="flex-grid condensed data-item no-visible Results" data-role="listview" data-name="ELements" data-autolist="NoEmpty" style="height: 500px;  overflow-y: scroll;">
-        <div class="row row-template item-row item-ident">
-            <div class="cell size10">
-                <div class="flex-grid condensed">
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size10">Logo z nazwą szkoły</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Nazwa zajęć</div>
-                        <div class="cell size5">Odległość</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Poziom trudności</div>
-                        <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell size5">Akceptowane karty</div>
-                        <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-                    </div>
-                            </div>
-                        </div>
+   <div class="flex-grid condensed data-item no-visible Results" data-role="listview" data-name="ELements" data-autolist="NoEmpty" style="height:30px; overflow-y: scroll;">
+        <div class="row-template item-row item-ident">
+
+            <div class="row cells12" style="margin-top:2%; background-color:cornflowerblue;" onclick="ShowDetails(this)">
+                <div class="cell size2">
+                    <img src="~/Images/pzykladlogo.jpg" />
+                </div>
+                <div class="cell size10" style="margin-left:5%;">
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:2%;">Nazwa zajęć</div>
+                        <div class="cell size3" style="margin-top:2%;">Odległość</div>
+                        <div class="cell size4" style="margin-top:2%;">Akceptowane karty</div>
+                    </div>                   
+                    <div class="row cells10"  style="height:33px;">
+                        <div class="cell size3" style="margin-top:10%;">Poziom trudności</div>
+                        <div class="cell size3" style="margin-top:10%;">Dzień tygodnia i godzina zajęć</div>
+                        <div class="cell size4" style="margin-top:10%;">Kiedy pierwsze zajęcia w grupie</div>
                     </div>
                 </div>
+            </div>
+            <div class="row cells12" style="margin-top:2%; background-color:cornflowerblue;" onclick="ShowDetails(this)">
+                <div class="cell size2">
+                    <img src="~/Images/pzykladlogo.jpg" />
+                </div>
+                <div class="cell size10" style="margin-left:5%;">
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:2%;">Nazwa zajęć</div>
+                        <div class="cell size3" style="margin-top:2%;">Odległość</div>
+                        <div class="cell size4" style="margin-top:2%;">Akceptowane karty</div>
+                    </div>
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:10%;">Poziom trudności</div>
+                        <div class="cell size3" style="margin-top:10%;">Dzień tygodnia i godzina zajęć</div>
+                        <div class="cell size4" style="margin-top:10%;">Kiedy pierwsze zajęcia w grupie</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cells12" style="margin-top:2%; background-color:cornflowerblue;" onclick="ShowDetails(this)">
+                <div class="cell size2">
+                    <img src="~/Images/pzykladlogo.jpg" />
+                </div>
+                <div class="cell size10" style="margin-left:5%;">
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:2%;">Nazwa zajęć</div>
+                        <div class="cell size3" style="margin-top:2%;">Odległość</div>
+                        <div class="cell size4" style="margin-top:2%;">Akceptowane karty</div>
+                    </div>
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:10%;">Poziom trudności</div>
+                        <div class="cell size3" style="margin-top:10%;">Dzień tygodnia i godzina zajęć</div>
+                        <div class="cell size4" style="margin-top:10%;">Kiedy pierwsze zajęcia w grupie</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cells12" style="margin-top:2%; background-color:cornflowerblue;" onclick="ShowDetails(this)">
+                <div class="cell size2">
+                    <img src="~/Images/pzykladlogo.jpg" />
+                </div>
+                <div class="cell size10" style="margin-left:5%;">
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:2%;">Nazwa zajęć</div>
+                        <div class="cell size3" style="margin-top:2%;">Odległość</div>
+                        <div class="cell size4" style="margin-top:2%;">Akceptowane karty</div>
+                    </div>
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:10%;">Poziom trudności</div>
+                        <div class="cell size3" style="margin-top:10%;">Dzień tygodnia i godzina zajęć</div>
+                        <div class="cell size4" style="margin-top:10%;">Kiedy pierwsze zajęcia w grupie</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cells12" style="margin-top:2%; background-color:cornflowerblue;" onclick="ShowDetails(this)">
+    <div class="cell size2">
+        <img src="~/Images/pzykladlogo.jpg" />
+    </div>
+    <div class="cell size10" style="margin-left:5%;">
+        <div class="row cells10" style="height:33px;">
+            <div class="cell size3" style="margin-top:2%;">Nazwa zajęć</div>
+            <div class="cell size3" style="margin-top:2%;">Odległość</div>
+            <div class="cell size4" style="margin-top:2%;">Akceptowane karty</div>
+        </div>
+        <div class="row cells10" style="height:33px;">
+            <div class="cell size3" style="margin-top:10%;">Poziom trudności</div>
+            <div class="cell size3" style="margin-top:10%;">Dzień tygodnia i godzina zajęć</div>
+            <div class="cell size4" style="margin-top:10%;">Kiedy pierwsze zajęcia w grupie</div>
+        </div>
+    </div>
+            </div>
+            <div class="row cells12" style="margin-top:2%; background-color:cornflowerblue;" onclick="ShowDetails(this)">
+                <div class="cell size2">
+                    <img src="~/Images/pzykladlogo.jpg" />
+                </div>
+                <div class="cell size10" style="margin-left:5%;">
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:2%;">Nazwa zajęć</div>
+                        <div class="cell size3" style="margin-top:2%;">Odległość</div>
+                        <div class="cell size4" style="margin-top:2%;">Akceptowane karty</div>
+                    </div>
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:10%;">Poziom trudności</div>
+                        <div class="cell size3" style="margin-top:10%;">Dzień tygodnia i godzina zajęć</div>
+                        <div class="cell size4" style="margin-top:10%;">Kiedy pierwsze zajęcia w grupie</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cells12" style="margin-top:2%; background-color:cornflowerblue;" onclick="ShowDetails(this)">
+                <div class="cell size2">
+                    <img src="~/Images/pzykladlogo.jpg" />
+                </div>
+                <div class="cell size10" style="margin-left:5%;">
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:2%;">Nazwa zajęć</div>
+                        <div class="cell size3" style="margin-top:2%;">Odległość</div>
+                        <div class="cell size4" style="margin-top:2%;">Akceptowane karty</div>
+                    </div>
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:10%;">Poziom trudności</div>
+                        <div class="cell size3" style="margin-top:10%;">Dzień tygodnia i godzina zajęć</div>
+                        <div class="cell size4" style="margin-top:10%;">Kiedy pierwsze zajęcia w grupie</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cells12" style="margin-top:2%; background-color:cornflowerblue;" onclick="ShowDetails(this)">
+                <div class="cell size2">
+                    <img src="~/Images/pzykladlogo.jpg" />
+                </div>
+                <div class="cell size10" style="margin-left:5%;">
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:2%;">Nazwa zajęć</div>
+                        <div class="cell size3" style="margin-top:2%;">Odległość</div>
+                        <div class="cell size4" style="margin-top:2%;">Akceptowane karty</div>
+                    </div>
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:10%;">Poziom trudności</div>
+                        <div class="cell size3" style="margin-top:10%;">Dzień tygodnia i godzina zajęć</div>
+                        <div class="cell size4" style="margin-top:10%;">Kiedy pierwsze zajęcia w grupie</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cells12" style="margin-top:2%; background-color:cornflowerblue;" onclick="ShowDetails(this)">
+                <div class="cell size2">
+                    <img src="~/Images/pzykladlogo.jpg" />
+                </div>
+                <div class="cell size10" style="margin-left:5%;">
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:2%;">Nazwa zajęć</div>
+                        <div class="cell size3" style="margin-top:2%;">Odległość</div>
+                        <div class="cell size4" style="margin-top:2%;">Akceptowane karty</div>
+                    </div>
+                    <div class="row cells10" style="height:33px;">
+                        <div class="cell size3" style="margin-top:10%;">Poziom trudności</div>
+                        <div class="cell size3" style="margin-top:10%;">Dzień tygodnia i godzina zajęć</div>
+                        <div class="cell size4" style="margin-top:10%;">Kiedy pierwsze zajęcia w grupie</div>
+                    </div>
+                </div>
+            </div> 
+                        </div>
+        </div>
+                  
 </body>
 </html>
 <script>
