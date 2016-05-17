@@ -43,10 +43,8 @@
     <script src="jquery.js"></script>
     <script src="~/Scripts/metro.js"></script>
     <script src="~/Scripts/autocomplete/jquery-autocomplete.js"></script>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 </head>
 
-<<<<<<< Updated upstream
 <body style="background-image:url('@Url.Content("~/images/dziwnypan.png")'); margin-left:5%; margin-right:5%;">
     <div class="grid HeaderFilter no-visible" style="background-color:cadetblue;">
         <div class="row">
@@ -69,346 +67,87 @@
                         <span class="check"></span>
                         <span class="caption">Zaznacz wszystko</span>
                     </label>
-=======
-<body style="background-image: url('@Url.Content("~/images/dziwnypan.png")'); margin-left: 5%; margin-right: 5%;">
-
-<div id="map" style="width:400px; height:400px;"></div>
-
-<div class="grid HeaderFilter no-visible" style="background-color: cadetblue;">
-<div class="row">
-    <button>Zmien zajęcia i/lub miejsce zamieszkania</button>
-</div>
-<div class="row cells7">
-    <div class="cell" style="margin-top: 2%; color: white;">Pozim trudności</div>
-    <div class="cell" style="margin-top: 2%; color: white;">Dzień zajęć</div>
-    <div class="cell" style="margin-top: 2%; color: white;">Godzina zajęć</div>
-    <div class="cell" style="margin-top: 2%; color: white;">Ilość osób w grupie</div>
-    <div class="cell" style="margin-top: 2%; color: white;">Akceptowane karty</div>
-    <div class="cell" style="margin-top: 2%; color: white;">Temin pierwszych zajęć</div>
-    <div class="cell" style="margin-top: 2%; color: white;">Odległość</div>
-</div>
-<div class="row cells7">
-<div class="cell" style="height: 70px; overflow-y: scroll; color: white;">
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Zaznacz wszystko</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Początkujący</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Średniozaawansowany</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Zaawansowany</span>
-        </label>
-    </div>
-</div>
-<div class="cell" style="height: 70px; overflow-y: scroll; color: white;">
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Zaznacz wszystko</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Poniedziałek</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Wtorek</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Środa</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Czwartek</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Piątek</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Sobota</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Niedziela</span>
-        </label>
-    </div>
-</div>
-<div class="cell" style="height: 70px; overflow-y: scroll; color: white;">
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Zaznacz wszystko</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">7-10</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">10-13</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">13-16</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">16-19</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">19-22</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">22-24</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">01-07</span>
-        </label>
-    </div>
-</div>
-<div class="cell" style="height: 70px; overflow-y: scroll; color: white;">
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Zaznacz wszystko</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Indywidualne</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">2-3</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">4-8</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">więcej niż 8</span>
-        </label>
-    </div>
-</div>
-<div class="cell" style="height: 70px; overflow-y: scroll; color: white;">
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Zaznacz wszystko</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">FitProfit</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Multisport</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">OkGo</span>
-        </label>
-    </div>
-</div>
-<div class="cell" style="height: 70px; overflow-y: scroll; color: white;">
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Zaznacz wszystko</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Już rozpoczęste</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Najbliższy tydzień</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Najbliższe dwa tygodnie</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Najbliższy miesiąc</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Dalej niż najbliższy miesiąc</span>
-        </label>
-    </div>
-</div>
-<div class="cell" style="height: 70px; overflow-y: scroll; color: white;">
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Zaznacz wszystko</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">Do 2km</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">2km - 5km</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">5km - 8km</span>
-        </label>
-    </div>
-    <div class="row">
-        <label class="input-control checkbox small-check">
-            <input type="checkbox" unchecked>
-            <span class="check"></span>
-            <span class="caption">8km - więcej</span>
-        </label>
-    </div>
-</div>
-</div>
-<div class="row"></div>
-
-</div>
-<div class="grid PrevFilters" style="margin-left: 5%; margin-right: 5%; background-color: cadetblue;">
-    <div class="row cells5">
-        <div class="cell">
-            <div class="cell"><img src="~/Images/mission.jpg"/>
-            </div>
-        </div>
-        <div class="cell colspan4" style="margin-top: 2%;">
-            <div class="row cells3">
-                <div class="cell"><label style="color: white; font-size: larger;">Na zajęcia będę dojeżdżać z: </label>
->>>>>>> Stashed changes
                 </div>
-                <div class="cell"><input class="city-picker" type="text" placeholder="Np. Warszawa," style="width: 80%;"/>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Początkujący</span>
+                    </label>
                 </div>
-                <div class="cell"><input class="street-picker disabled" disabled="disabled" type="text" placeholder="Np. Złota 1" style="width: 80%;"/>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Średniozaawansowany</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Zaawansowany</span>
+                    </label>
                 </div>
             </div>
-            <div class="row cells3">
-                <div class="cell"><label style="color: white; font-size: larger;">Podaj nazwę zajęć: </label>
+            <div class="cell" style="height: 70px;  overflow-y: scroll; color:white;">
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Zaznacz wszystko</span>
+                    </label>
                 </div>
-                <div class="cell"><input type="text" placeholder="Np. Basen, Siłownia"/>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Poniedziałek</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Wtorek</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Środa</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Czwartek</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Piątek</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Sobota</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Niedziela</span>
+                    </label>
                 </div>
             </div>
-<<<<<<< Updated upstream
             <div class="cell" style="height: 70px;  overflow-y: scroll; color:white;">
                 <div class="row">
                     <label class="input-control checkbox small-check">
@@ -465,46 +204,156 @@
                         <span class="check"></span>
                         <span class="caption">01-07</span>
                     </label>
-=======
-            <div class="row cells3">
-                <div class="cell"><label style="color: white; font-size: larger;">Lub wybierz z listy: </label>
->>>>>>> Stashed changes
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row cells3">
-        <div class="cell"></div>
-        <div class="cell ActivityList" style="height: 120px; overflow-y: scroll; color: white;">
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Zaznacz wszystko</span>
-                </label>
+            <div class="cell" style="height: 70px;  overflow-y: scroll; color:white;">
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Zaznacz wszystko</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Indywidualne</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">2-3</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">4-8</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">więcej niż 8</span>
+                    </label>
+                </div>                            
             </div>
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Basen</span>
-                </label>
+            <div class="cell" style="height: 70px;  overflow-y: scroll; color:white;">
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Zaznacz wszystko</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">FitProfit</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Multisport</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">OkGo</span>
+                    </label>
+                </div>
             </div>
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Siłownia</span>
-                </label>
+            <div class="cell" style="height: 70px;  overflow-y: scroll; color:white;">
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Zaznacz wszystko</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Już rozpoczęste</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Najbliższy tydzień</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Najbliższe dwa tygodnie</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Najbliższy miesiąc</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Dalej niż najbliższy miesiąc</span>
+                    </label>
+                </div>
             </div>
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Taniec</span>
-                </label>
+            <div class="cell" style="height: 70px;  overflow-y: scroll; color:white;">
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Zaznacz wszystko</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Do 2km</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">2km - 5km</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">5km - 8km</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">8km - więcej</span>
+                    </label>
+                </div>
             </div>
-<<<<<<< Updated upstream
         </div>     
         <div class="row"></div>
       
@@ -574,69 +423,56 @@
                         <span class="caption">Jazda konna</span>
                     </label>
                 </div>
-=======
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Ścianka wspinaczkowa</span>
-                </label>
             </div>
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Jazda konna</span>
-                </label>
+            <div class="cell ActivityChildList no-visible" style="height: 120px;  overflow-y: scroll; color:white;">
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Zaznacz wszystko</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Aerobik wodny</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Aerobik wodny dla pojebanych</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Taniec połamaniec</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Taniec na rurze</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="input-control checkbox small-check">
+                        <input type="checkbox" unchecked>
+                        <span class="check"></span>
+                        <span class="caption">Taniec na rurze nago</span>
+                    </label>
+                </div>
             </div>
         </div>
-        <div class="cell ActivityChildList no-visible" style="height: 120px; overflow-y: scroll; color: white;">
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Zaznacz wszystko</span>
-                </label>
->>>>>>> Stashed changes
-            </div>
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Aerobik wodny</span>
-                </label>
-            </div>
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Aerobik wodny dla pojebanych</span>
-                </label>
-            </div>
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Taniec połamaniec</span>
-                </label>
-            </div>
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Taniec na rurze</span>
-                </label>
-            </div>
-            <div class="row">
-                <label class="input-control checkbox small-check">
-                    <input type="checkbox" unchecked>
-                    <span class="check"></span>
-                    <span class="caption">Taniec na rurze nago</span>
-                </label>
-            </div>
+        <div class="row">
+            <button class="button lighten primary full-size HideFiltersButton" style="font-size:larger;" onclick="HideFilters(this)">Pokaż</button>
         </div>
     </div>
-<<<<<<< Updated upstream
    <div class="flex-grid condensed no-visible data-item Results" data-role="listview" data-name="ELements" data-autolist="NoEmpty" style=" overflow-y: scroll;">
         <div class="row-template item-row item-ident">
 
@@ -796,451 +632,9 @@
                         </div>
         </div>
                   
-=======
-    <div class="row">
-        <button class="button lighten primary full-size HideFiltersButton" id="HideFiltersButton" style="font-size: larger;" onclick="HideFilters(this)">Pokaż</button>
-    </div>
-</div>
-
-<div class="flex-grid condensed data-item no-visible Results" data-role="listview" data-name="ELements" data-autolist="NoEmpty" style="height: 500px; overflow-y: scroll;">
-<div class="row row-template item-row item-ident">
-<div class="cell size10">
-<div class="flex-grid condensed">
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-<div class="row">
-    <div class="cell size10">Logo z nazwą szkoły</div>
-</div>
-<div class="row">
-    <div class="cell size5">Nazwa zajęć</div>
-    <div class="cell size5">Odległość</div>
-</div>
-<div class="row">
-    <div class="cell size5">Poziom trudności</div>
-    <div class="cell size5">Dzień tygodnia i godzina zajęć</div>
-</div>
-<div class="row">
-    <div class="cell size5">Akceptowane karty</div>
-    <div class="cell size5">Kiedy pierwsze zajęcia w grupie</div>
-</div>
-</div>
-</div>
-</div>
-</div>
->>>>>>> Stashed changes
 </body>
 </html>
 <script>
-    
-
-    function InitializeMap() {
-        var latlng = new google.maps.LatLng(-34.397, 150.644);
-        var myOptions = {
-            zoom: 8,
-            center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-        };
-        var map = new google.maps.Map(document.getElementById("map"), myOptions);
-
-        var geocoder = new google.maps.Geocoder();
-        document.getElementById('HideFiltersButton').addEventListener('click', function () {
-                    geocodeAddress(geocoder, map);
-                });
-    }
-    window.onload = InitializeMap;
-
-    function geocodeAddress(geocoder, resultsMap) {
-        var address = "Warszawa";
-        geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                resultsMap.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    map: resultsMap,
-                    position: results[0].geometry.location
-                });
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-    }
-
-
-
-
-
     HideFilters = function(d) {
         var parentelem = $(d).parent();
         var parent2 = $(parentelem).parent();
