@@ -17,20 +17,12 @@ namespace onFit.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Details()
         {
-            ViewBag.Message = "Your app description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
+  
         public ActionResult CityFilter(string searchString)
         {
             List<CityFilter_Result> _cityList = new List<CityFilter_Result>();

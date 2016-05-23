@@ -47,7 +47,6 @@
 </head>
 
 <body style="background-image: url('@Url.Content("~/images/dziwnypan.png")'); margin-left: 5%; margin-right: 5%;">
-<div id="map" style="width: 400px; height: 300px;"></div>
 <div class="grid HeaderFilter no-visible" style="background-color: cadetblue;">
 <div class="row">
     <button class="button lighten primary full-size HideFiltersButton">Zmien zajęcia i/lub miejsce zamieszkania</button>
@@ -645,40 +644,6 @@ ActivityListcheck(this)">
 </body>
 </html>
 <script>
-    function InitializeMap() {
-        var latlng = new google.maps.LatLng(-34.397, 150.644);
-        var myOptions = {
-            zoom: 8,
-            center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map"), myOptions);
-
-        var geocoder = new google.maps.Geocoder();
-        document.getElementById('HideFiltersButton').addEventListener('click', function () {
-                    geocodeAddress(geocoder, map);
-                });
-    }
-    window.onload = InitializeMap;
-
-    function geocodeAddress(geocoder, resultsMap) {
-        var address = "Warszawa, Poczty Gdańskiej 20"; // test adres - działa !!!!!!!!!!!!!!!1111111111oneoneeleven
-        geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                resultsMap.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    map: resultsMap,
-                    position: results[0].geometry.location
-                });
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-    }
-
-
-
-
 
     HideFilters = function(d) {
         var parentelem = $(d).parent();
